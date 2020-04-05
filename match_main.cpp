@@ -144,13 +144,19 @@ void Match_Main::Db_Afficher_Liste_Matchs()
      model->setHeaderData(2, Qt::Horizontal, tr("Visitor Team"));
      model->setHeaderData(3, Qt::Horizontal, tr("Location"));
      model->setHeaderData(4, Qt::Horizontal, tr("Play Date"));
+     model->setHeaderData(5, Qt::Horizontal, tr("Home_Team_Pic"));
+     model->setHeaderData(6, Qt::Horizontal, tr("Away_Team_Pic"));
 
 
 
-     //view = ui->Matchs_List;
-     QTableView *view= new QTableView;
+     view= new QTableView;
+     view->setStyleSheet("QTableView { border: none;"
+                                         "background-color: white;"
+                                         "selection-background-color: #999}");
      view->setModel(model);
      view->resizeColumnsToContents();
+     view->setSortingEnabled(true);
+     view->setColumnHidden(0,true);
 
 
             submitButton = new QPushButton(tr("Submit"));
@@ -163,20 +169,19 @@ void Match_Main::Db_Afficher_Liste_Matchs()
 
             buttonBox = new QDialogButtonBox(Qt::Vertical);
             buttonBox->addButton(submitButton, QDialogButtonBox::ActionRole);
-            buttonBox->addButton(revertButton, QDialogButtonBox::ResetRole);
-            buttonBox->addButton(deleteButton , QDialogButtonBox::ActionRole);
-            buttonBox->addButton(quitButton, QDialogButtonBox::RejectRole);
+            buttonBox->addButton(deleteButton ,QDialogButtonBox::ActionRole);
+            buttonBox->addButton(revertButton, QDialogButtonBox::ActionRole);
             buttonBox->addButton(pdfButton, QDialogButtonBox::ActionRole);
             buttonBox->addButton(jsonButton,QDialogButtonBox::ActionRole);
-
-          /*  QModelIndex curIndex =view->currentIndex();
+            buttonBox->addButton(quitButton, QDialogButtonBox::ActionRole);
+           /* QModelIndex curIndex =view->currentIndex();
             QSqlRecord record = model->record(curIndex.row());
             model->removeRow(curIndex.row());*/
-
+            connect(deleteButton, &QPushButton::clicked,this, &Match_Main::remove);
             connect(submitButton, &QPushButton::clicked, this, &Match_Main::submit);
             connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
             connect(quitButton, &QPushButton::clicked, this, &Match_Main::close);
-            connect(deleteButton,&QPushButton::clicked, this, &Match_Main::remove);
+
             connect(pdfButton,&QPushButton::clicked, this, &Match_Main::choose_Filename);
             connect(jsonButton,&QPushButton::clicked,this,&Match_Main::generate_Json);
             connect(view, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableClicked(const QModelIndex &)));
@@ -186,32 +191,17 @@ void Match_Main::Db_Afficher_Liste_Matchs()
 
                     setWindowTitle(tr("Cached Table"));
 
-            QModelIndex index = view->selectionModel()->currentIndex();
-           QString id=view->model()->index(index.row(),0).data().toString();
-          qDebug()<<id;
+
+                    qDebug()<<view->selectionModel()->selectedIndexes();
+                    QModelIndex index = view->selectionModel()->currentIndex();
+                   QString id=view->model()->index(index.row(),0).data().toString();
+                  qDebug()<<id;
 
 
-
-}
-
-
-
-void Match_Main::submit()
-{
-    model->database().transaction();
-    if (model->submitAll()) {
-        model->database().commit();
-    } else {
-        model->database().rollback();
-        QMessageBox::warning(this, tr("Cached Table"),
-                             tr("The database reported an error: %1"))
-                             ;
-    }
 }
 
 void Match_Main::remove()
 {
-
 
     QModelIndexList selection = view->selectionModel()->selectedRows();
 
@@ -225,6 +215,22 @@ void Match_Main::remove()
 
 
 }
+
+
+void Match_Main::submit()
+{
+
+    model->database().transaction();
+    if (model->submitAll()) {
+        model->database().commit();
+    } else {
+        model->database().rollback();
+        QMessageBox::warning(this, tr("Cached Table"),
+                             tr("The database reported an error: %1"))
+                             ;
+    }
+}
+
 
 
 

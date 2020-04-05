@@ -44,7 +44,9 @@ void Tournoi_Main::Db_Add_Values_To_Tournois_Table(QString Nom ,QString Categori
     {
     qDebug()<<"Error adding values to tournois table";
     }
-
+    else {
+    this->close();
+    }
 
 }
 
@@ -67,10 +69,16 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
 
 
 
-      QTableView *view= new QTableView;
+      view= new QTableView;
       view->setModel(model);
-      view->resizeColumnsToContents();
 
+      view->resizeColumnsToContents();
+      view->setStyleSheet("QTableView { border: none;"
+                                          "background-color: white;"
+                                          "selection-background-color: #999}");
+
+      view->setSortingEnabled(true);
+      view->setColumnHidden(0,true);
 
              submitButton = new QPushButton(tr("Submit"));
              submitButton->setDefault(true);
@@ -82,11 +90,11 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
 
              buttonBox = new QDialogButtonBox(Qt::Vertical);
              buttonBox->addButton(submitButton, QDialogButtonBox::ActionRole);
-             buttonBox->addButton(revertButton, QDialogButtonBox::ResetRole);
-             buttonBox->addButton(deleteButton , QDialogButtonBox::ActionRole);
-             buttonBox->addButton(quitButton, QDialogButtonBox::RejectRole);
+             buttonBox->addButton(deleteButton ,QDialogButtonBox::ActionRole);
+             buttonBox->addButton(revertButton, QDialogButtonBox::ActionRole);
              buttonBox->addButton(pdfButton, QDialogButtonBox::ActionRole);
              buttonBox->addButton(jsonButton,QDialogButtonBox::ActionRole);
+             buttonBox->addButton(quitButton, QDialogButtonBox::ActionRole);
 
              QModelIndex curIndex =view->currentIndex();
              QSqlRecord record = model->record(curIndex.row());

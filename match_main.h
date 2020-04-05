@@ -23,6 +23,9 @@
 #include <QTableWidget>
 #include <QModelIndex>
 #include <QHeaderView>
+#include <QItemSelectionModel>
+#include <QModelIndexList>
+
 
 namespace Ui {
 class Match_Main;
@@ -71,6 +74,7 @@ private:
     QTableView *view;
     QString Home_Team_Pic;
     QString Away_Team_Pic;
+
 };
 
 
