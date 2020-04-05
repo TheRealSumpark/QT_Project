@@ -44,9 +44,14 @@ void Tournoi_Main::Db_Add_Values_To_Tournois_Table(QString Nom ,QString Categori
     {
     qDebug()<<"Error adding values to tournois table";
     }
-    else {
-    this->close();
-    }
+
+        else {
+            QMessageBox::information(nullptr, QObject::tr(""),
+                        QObject::tr("Ajout avec Succès\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+
+        }
+
 
 }
 
@@ -158,8 +163,8 @@ void Tournoi_Main::generate_Pdf()
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
      printer.setOrientation(QPrinter::Landscape);
-     QString BasePath="C:/Users/toshiba/Desktop/C++/";
-     QString Filename=BasePath.append(this->getFilename()).append(".pdf");
+        QString BasePath=QDir::currentPath();
+       QString Filename=BasePath.append("/").append(this->getFilename()).append(".pdf");
     printer.setOutputFileName(Filename);
 
     QTextDocument doc;
@@ -182,7 +187,11 @@ void Tournoi_Main::generate_Pdf()
     doc.setHtml(text);
     doc.setPageSize(printer.pageRect().size());
     doc.print(&printer);
-    ui->stackedWidget->setCurrentIndex(1);
+    QMessageBox::question(
+        this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
+    ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
+
+
 
 }
 
@@ -208,9 +217,12 @@ void Tournoi_Main::generate_Json()
        }
        obj["Tournois"] = Tournois;//(6)
 
-     QFile file("C:/Users/toshiba/Desktop/C++/text.json");
-       file.open(QFile::WriteOnly);
-       file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
+       QString Filename=QDir::currentPath().append("/Tournois.json");
+    QFile file(Filename); //Création du fichier
+      file.open(QFile::WriteOnly);
+      file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
+      QMessageBox::question(
+          this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
 
 
 

@@ -68,11 +68,12 @@ void Match_Main::on_Match_Submit_clicked()
 void Match_Main::Db_Add_Values_To_Match_Table(QString Home_Team,QString Visitor_Team , QDate Play_Date, QString Location,QString Home_Team_Pic,QString Away_Team_Pic)
 {
     QSqlQuery query;
-    query.prepare(" insert into \"Sumpark\".\"Matchs\"(Id,Home_Team,Visitor_Team,Play_Date,Location,Home_Team_Pic,Away_Team_Pic) values (\"Sumpark\".\"Matchs_SEQ\".NEXTVAL,?,?,?,?,?,?);");
+    query.prepare(" insert into \"Sumpark\".\"Matchs\""
+                  "(Id,Home_Team,Visitor_Team,Play_Date,Location"
+                  ",Home_Team_Pic,Away_Team_Pic) values (\"Sumpark\".\"Matchs_SEQ\".NEXTVAL,?,?,?,?,?,?);");
 
     query.addBindValue(Home_Team);
     query.addBindValue(Visitor_Team);
-    //query.addBindValue(QDateTime::fromString("mm/dd/yyyy"));
     query.addBindValue(Play_Date);
     query.addBindValue(Location);
     query.addBindValue(Home_Team_Pic);
@@ -83,7 +84,12 @@ void Match_Main::Db_Add_Values_To_Match_Table(QString Home_Team,QString Visitor_
     qDebug()<<"Error adding values to matchs table";
     }
 
+    else {
+        QMessageBox::information(nullptr, QObject::tr(""),
+                    QObject::tr("Ajout avec Succès\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
+    }
 
 /*
 
@@ -119,26 +125,18 @@ Query.exec(query);
 
 void Match_Main::Db_Afficher_Liste_Matchs()
 {   QSqlQuery query;
-   // QSqlQueryModel *Model= new QSqlQueryModel();
 
+     ui->stackedWidget->setCurrentIndex(1);// Definir l'onglet actuel du stacked Widget
 
+     model = new QSqlTableModel(this);  // Déclaration d'un nouveau model pour contenir toutes les données
+                                       //réccupérées de la base
+     model->setTable("\"Sumpark\".\"Matchs\""); //Définition de la base sur laquelle opère le model
+     model->setEditStrategy(QSqlTableModel::OnManualSubmit);//Définition de la stratégie de modification
+                        //dans notre cas un double clique sur une cellule  octroie à l'utilisateur de modifier sa
+                        //valeur
+     model->select();//remplir le model par les différentes données issues de la table  "Sumpark"."Matchs"
 
-     ui->stackedWidget->setCurrentIndex(1);
-
-     //TableEditor  editor("\"Sumpark\".\"Matchs\"",ui->page_2);
-
-   // query.exec("select * from \"Sumpark\".\"Matchs\" ");
-   // Model->setQuery(query);
-
-   //ui->Matchs_List->setModel(editor);
-
-   // editor.show();
-
-     model = new QSqlTableModel(this);
-     model->setTable("\"Sumpark\".\"Matchs\"");
-     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-     model->select();
-
+     //Configutarion  des nom de colonnes
      model->setHeaderData(0, Qt::Horizontal, tr("ID"));
      model->setHeaderData(1, Qt::Horizontal, tr("Home Team"));
      model->setHeaderData(2, Qt::Horizontal, tr("Visitor Team"));
@@ -150,15 +148,18 @@ void Match_Main::Db_Afficher_Liste_Matchs()
 
 
      view= new QTableView;
+     //Configuration du style
      view->setStyleSheet("QTableView { border: none;"
                                          "background-color: white;"
                                          "selection-background-color: #999}");
      view->setModel(model);
+     //definition du model a représenter
      view->resizeColumnsToContents();
-     view->setSortingEnabled(true);
-     view->setColumnHidden(0,true);
+     view->setSortingEnabled(true); //Permet le trie des colonnes
+     view->setColumnHidden(0,true); //Rendre invisible la colonne des ID
 
 
+     //Création des bouton
             submitButton = new QPushButton(tr("Submit"));
             submitButton->setDefault(true);
             revertButton = new QPushButton(tr("&Revert"));
@@ -174,9 +175,8 @@ void Match_Main::Db_Afficher_Liste_Matchs()
             buttonBox->addButton(pdfButton, QDialogButtonBox::ActionRole);
             buttonBox->addButton(jsonButton,QDialogButtonBox::ActionRole);
             buttonBox->addButton(quitButton, QDialogButtonBox::ActionRole);
-           /* QModelIndex curIndex =view->currentIndex();
-            QSqlRecord record = model->record(curIndex.row());
-            model->removeRow(curIndex.row());*/
+
+            //Connection des boutons avec leurs fonctions relatives
             connect(deleteButton, &QPushButton::clicked,this, &Match_Main::remove);
             connect(submitButton, &QPushButton::clicked, this, &Match_Main::submit);
             connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
@@ -189,7 +189,7 @@ void Match_Main::Db_Afficher_Liste_Matchs()
                    ui->horizontalLayout_4->addWidget(buttonBox);
 
 
-                    setWindowTitle(tr("Cached Table"));
+                    setWindowTitle(tr("Liste Des Matchs"));
 
 
                     qDebug()<<view->selectionModel()->selectedIndexes();
@@ -202,10 +202,10 @@ void Match_Main::Db_Afficher_Liste_Matchs()
 
 void Match_Main::remove()
 {
-
+   // récupère la listes des lignes sélectionnées
     QModelIndexList selection = view->selectionModel()->selectedRows();
 
-    // Multiple rows can be selected
+
     for(int i=0; i< selection.count(); i++)
     {
        model->removeRow(i);
@@ -255,15 +255,19 @@ void Match_Main::on_Filename_Cancel_clicked()
 
 void Match_Main::generate_Pdf()
 {
-    QPrinter printer(QPrinter::PrinterResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-     printer.setOrientation(QPrinter::Landscape);
-     QString BasePath="C:/Users/toshiba/Desktop/C++/";
-     QString Filename=BasePath.append(this->getFilename()).append(".pdf");
+    QPrinter printer(QPrinter::PrinterResolution);//Déclaration du printer qui s'occupera de la création du fichier
+    printer.setOutputFormat(QPrinter::PdfFormat);//Definition du format
+     printer.setOrientation(QPrinter::Landscape);//Definition de l'orientation , dans ce cas c'est paysage
+     QString BasePath=QDir::currentPath();//Récupération du chemin d'accès de
+                                                               //l'exectable de l'application
+     QString Filename=BasePath.append("/").append(this->getFilename()).append(".pdf");
+        //Récupération du nom du fichier auquel on ajoute l'extension
     printer.setOutputFileName(Filename);
+        //Définition du chemin d'accès de l'output
 
     QTextDocument doc;
-
+        //Préparationdu  document
+        //Formatage des données sous forme de tableau
     QString text("<table width=\"100%\" border=\"1\"><thead>");
     text.append("<tr>");
      for (int i = 0; i < model->columnCount(); i++) {
@@ -281,25 +285,23 @@ void Match_Main::generate_Pdf()
     text.append("</tbody></table>");
     doc.setHtml(text);
     doc.setPageSize(printer.pageRect().size());
-    doc.print(&printer);
-    ui->stackedWidget->setCurrentIndex(1);
+    doc.print(&printer);//création du pdf
+    QMessageBox::question(
+        this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
+    ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
 
 }
 
 void Match_Main::generate_Json()
 {
-
-   QJsonObject obj;//root object
-
-       QJsonArray Matchs;//(2)
-
+     QJsonObject obj;//L'objet
+       QJsonArray Matchs;//Création d'un Tableau intitulé Matchs
         QSqlQuery query;
-
-       query.exec("select * from \"Sumpark\".\"Matchs\"");
-       while(query.next())//load all data from the database
+       query.exec("select * from \"Sumpark\".\"Matchs\""); // Récupération des données de la base
+       while(query.next()) //Lire les données récupérés
        {
-           QJsonObject Match;//(3)
-           Match["Id"] = query.value(0).toInt();//(4)
+           QJsonObject Match;//création d'un objet  json
+           Match["Id"] = query.value(0).toInt();//Attribution des valeurs appropriées à chaque attribut
            Match["Home_Team"] = query.value(1).toString();
            Match["Visitor_Team"] = query.value(2).toString();
            Match["Location"] = query.value(3).toString();
@@ -307,11 +309,12 @@ void Match_Main::generate_Json()
            Matchs.append(Match);//(5)
        }
        obj["Matchs"] = Matchs;//(6)
-
-     QFile file("C:/Users/toshiba/Desktop/C++/text.json");
+        QString Filename=QDir::currentPath().append("/Matchs.json");
+     QFile file(Filename); //Création du fichier
        file.open(QFile::WriteOnly);
        file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
-
+       QMessageBox::question(
+           this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
 
 
 }
