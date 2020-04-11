@@ -155,7 +155,7 @@ void Match_Main::Db_Afficher_Liste_Matchs()
      view->setModel(model);
      //definition du model a représenter
      view->resizeColumnsToContents();
-     view->setSortingEnabled(true); //Permet le trie des colonnes
+     view->setSortingEnabled(true); //Permet le tri des colonnes
      view->setColumnHidden(0,true); //Rendre invisible la colonne des ID
 
 
@@ -203,12 +203,12 @@ void Match_Main::Db_Afficher_Liste_Matchs()
 void Match_Main::remove()
 {
    // récupère la listes des lignes sélectionnées
-    QModelIndexList selection = view->selectionModel()->selectedRows();
+    QModelIndexList selection = view->selectionModel()->selectedIndexes();
 
 
     for(int i=0; i< selection.count(); i++)
     {
-       model->removeRow(i);
+       model->removeRow(selection[i].row());
 
     }
 

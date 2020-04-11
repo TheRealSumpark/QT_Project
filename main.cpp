@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
                     QObject::tr("connection failed.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
-
+    w.centralWidget()->setStyleSheet("image: url(C:/Users/toshiba/Desktop/C++/QtApp/pics/Sportify.png)");
     return a.exec();
 }
 

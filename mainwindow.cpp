@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
-    QPixmap Background_Pic("C:/Users/toshiba/Desktop/C++/QtApp/pics/Sportify.png");
-    ui->Background_Pic->setPixmap(Background_Pic.scaled(ui->Background_Pic->width(),ui->Background_Pic->height()));
 
 
 
