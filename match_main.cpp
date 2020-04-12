@@ -15,9 +15,6 @@ Match_Main::Match_Main(QWidget *parent) :
      ui->Background_pic->setPixmap(Background_Pic.scaled(ui->Background_pic->width(),ui->Background_pic->height()));
 
 
-
-
-
 }
 
 Match_Main::~Match_Main()
@@ -64,6 +61,21 @@ void Match_Main::on_Match_Away_Pic_clicked()
 
 void Match_Main::on_Match_Submit_clicked()
 {
+    int error=0;
+    QPalette *red = new QPalette();
+    QPalette *white = new QPalette();
+     red->setColor(QPalette::Base,Qt::red);
+      white->setColor(QPalette::Base,Qt::white);
+        if(ui->Match_stadium->text().isEmpty())
+    {     ui->Match_stadium->setPalette(*red) ; error=1;}
+        else {  ui->Match_stadium->setPalette(*white); }
+        if(ui->Match_Home->text().isEmpty())
+    {       ui->Match_Home->setPalette(*red)  ;error=1;}
+        else {  ui->Match_Home->setPalette(*white); }
+        if(ui->Match_Visitor->text().isEmpty())
+    {     ui->Match_Visitor->setPalette(*red );error=1;}
+        else {  ui->Match_Visitor->setPalette(*white); }
+ if (!error)
  Db_Add_Values_To_Match_Table(ui->Match_Home->text(),ui->Match_Visitor->text(),ui->Match_date->selectedDate(), ui->Match_stadium->text(),Home_Team_Pic,Away_Team_Pic);
 }
 
@@ -177,22 +189,25 @@ void Match_Main::Db_Afficher_Liste_Matchs()
             buttonBox->addButton(submitButton, QDialogButtonBox::ActionRole);
             buttonBox->addButton(deleteButton ,QDialogButtonBox::ActionRole);
             buttonBox->addButton(revertButton, QDialogButtonBox::ActionRole);
-            buttonBox->addButton(pdfButton, QDialogButtonBox::ActionRole);
-            buttonBox->addButton(jsonButton,QDialogButtonBox::ActionRole);
+
             buttonBox->addButton(quitButton, QDialogButtonBox::ActionRole);
+            QDialogButtonBox *buttonBox1;
+            buttonBox1 = new QDialogButtonBox(Qt::Horizontal);
+            buttonBox1->addButton(pdfButton, QDialogButtonBox::ActionRole);
+            buttonBox1->addButton(jsonButton,QDialogButtonBox::ActionRole);
+            buttonBox1->setCenterButtons(true);
 
             //Connection des boutons avec leurs fonctions relatives
             connect(deleteButton, &QPushButton::clicked,this, &Match_Main::remove);
             connect(submitButton, &QPushButton::clicked, this, &Match_Main::submit);
             connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
             connect(quitButton, &QPushButton::clicked, this, &Match_Main::close);
-
             connect(pdfButton,&QPushButton::clicked, this, &Match_Main::choose_Filename);
             connect(jsonButton,&QPushButton::clicked,this,&Match_Main::generate_Json);
             connect(view, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableClicked(const QModelIndex &)));
                    ui->horizontalLayout_4->addWidget(view);
                    ui->horizontalLayout_4->addWidget(buttonBox);
-
+                   ui->horizontalLayout_6->addWidget(buttonBox1);
 
                     setWindowTitle(tr("Liste Des Matchs"));
 
@@ -243,7 +258,7 @@ void Match_Main::choose_Filename()
 {
 
     ui->stackedWidget->setCurrentIndex(2) ;
-    connect(ui->Filename_Submit,&QPushButton::clicked, this, &Match_Main::generate_Pdf);
+   connect(ui->Filename_Submit,&QPushButton::clicked, this, &Match_Main::generate_Pdf,Qt::UniqueConnection);
 }
 
 
@@ -255,11 +270,25 @@ void Match_Main::choose_Filename()
 
 void Match_Main::on_Filename_Cancel_clicked()
 {
+    QPalette *white = new QPalette();
+    white->setColor(QPalette::Base,Qt::white);
+   ui->File_name->setPalette(*white);
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void Match_Main::generate_Pdf()
 {
+    if(ui->File_name->text().isEmpty())
+    {       QPalette *red = new QPalette();
+           red->setColor(QPalette::Base,Qt::red);
+           if(ui->File_name->text().isEmpty())
+            {ui->File_name->setPalette(*red);}
+           ui->stackedWidget->setCurrentIndex(2);
+        }
+    else  {
+         QPalette *white = new QPalette();
+        white->setColor(QPalette::Base,Qt::white);
+    ui->File_name->setPalette(*white);
     QPrinter printer(QPrinter::PrinterResolution);//Déclaration du printer qui s'occupera de la création du fichier
     printer.setOutputFormat(QPrinter::PdfFormat);//Definition du format
      printer.setOrientation(QPrinter::Landscape);//Definition de l'orientation , dans ce cas c'est paysage
@@ -290,11 +319,10 @@ void Match_Main::generate_Pdf()
     text.append("</tbody></table>");
     doc.setHtml(text);
     doc.setPageSize(printer.pageRect().size());
-    doc.print(&printer);//création du pdf
-    QMessageBox::question(
-        this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
+    qDebug()<<"once";
+    QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
     ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
-
+    }
 }
 
 void Match_Main::generate_Json()
@@ -318,8 +346,7 @@ void Match_Main::generate_Json()
      QFile file(Filename); //Création du fichier
        file.open(QFile::WriteOnly);
        file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
-       QMessageBox::question(
-           this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
+       QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
 
 
 }
@@ -342,9 +369,11 @@ void Match_Main::onTableClicked(const QModelIndex &index)
             qDebug()<<query.value(0).toString();
             qDebug()<<query.value(1).toString();
             QPixmap Background_Pic=(query.value(0).toString());
-            ui->Home_Team_Pic->setPixmap(Background_Pic.scaled(ui->Home_Team_Pic->width(),ui->Home_Team_Pic->height()));
+
+
+            ui->Home_Team_Pic->setPixmap(Background_Pic.scaled(ui->Home_Team_Pic->width(),ui->Home_Team_Pic->height(),Qt::KeepAspectRatio));
             Background_Pic=(query.value(1).toString());
-            ui->Away_Team_Pic->setPixmap(Background_Pic.scaled(ui->Away_Team_Pic->width(),ui->Away_Team_Pic->height()));
+            ui->Away_Team_Pic->setPixmap(Background_Pic.scaled(ui->Away_Team_Pic->width(),ui->Away_Team_Pic->height(),Qt::KeepAspectRatio));
 
         }
 

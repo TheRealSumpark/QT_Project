@@ -25,7 +25,22 @@ void Tournoi_Main::on_pushButton_clicked()
 
 void Tournoi_Main::on_Tournoi_Main_Submit_clicked()
 {
-     Db_Add_Values_To_Tournois_Table(ui->Tournoi_Nom->text(), ui->Tournoi_Categorie->text(),ui->Tournoi_Date->text(), ui->Tournoi_NbParticipants->value());
+    int error=0;
+    QPalette *red = new QPalette();
+    QPalette *white = new QPalette();
+     red->setColor(QPalette::Base,Qt::red);
+      white->setColor(QPalette::Base,Qt::white);
+        if(ui->Tournoi_Nom->text().isEmpty())
+    {     ui->Tournoi_Nom->setPalette(*red) ; error=1;}
+        else {  ui->Tournoi_Nom->setPalette(*white); }
+        if(ui->Tournoi_Categorie->text().isEmpty())
+    {       ui->Tournoi_Categorie->setPalette(*red)  ;error=1;}
+        else {  ui->Tournoi_Categorie->setPalette(*white); }
+        if(ui->Tournoi_NbParticipants->value()<=0)
+    {     ui->Tournoi_NbParticipants->setPalette(*red );error=1;}
+        else {  ui->Tournoi_NbParticipants->setPalette(*white); }
+ if (!error)
+    Db_Add_Values_To_Tournois_Table(ui->Tournoi_Nom->text(), ui->Tournoi_Categorie->text(),ui->Tournoi_Date->text(), ui->Tournoi_NbParticipants->value());
 }
 
 
@@ -97,9 +112,15 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
              buttonBox->addButton(submitButton, QDialogButtonBox::ActionRole);
              buttonBox->addButton(deleteButton ,QDialogButtonBox::ActionRole);
              buttonBox->addButton(revertButton, QDialogButtonBox::ActionRole);
-             buttonBox->addButton(pdfButton, QDialogButtonBox::ActionRole);
-             buttonBox->addButton(jsonButton,QDialogButtonBox::ActionRole);
+
              buttonBox->addButton(quitButton, QDialogButtonBox::ActionRole);
+
+             QDialogButtonBox *buttonBox1;
+             buttonBox1 = new QDialogButtonBox(Qt::Horizontal);
+             buttonBox1->addButton(pdfButton, QDialogButtonBox::ActionRole);
+             buttonBox1->addButton(jsonButton,QDialogButtonBox::ActionRole);
+             buttonBox1->setCenterButtons(true);
+
 
              QModelIndex curIndex =view->currentIndex();
              QSqlRecord record = model->record(curIndex.row());
@@ -112,9 +133,11 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
              connect(pdfButton,&QPushButton::clicked, this, &Tournoi_Main::choose_Filename);
              connect(jsonButton,&QPushButton::clicked,this,&Tournoi_Main::generate_Json);
 
+
                     ui->horizontalLayout->addWidget(view);
                     ui->horizontalLayout->addWidget(buttonBox);
-
+                     ui->horizontalLayout_3->setAlignment(Qt::AlignHCenter);
+                    ui->horizontalLayout_3->addWidget(buttonBox1);
 
                      setWindowTitle(tr("Cached Table"));
 
@@ -160,6 +183,20 @@ void Tournoi_Main::remove()
 
 void Tournoi_Main::generate_Pdf()
 {
+    if(ui->Filename->text().isEmpty())
+    {       QPalette *red = new QPalette();
+           red->setColor(QPalette::Base,Qt::red);
+           if(ui->Filename->text().isEmpty())
+            {ui->Filename->setPalette(*red);}
+           ui->stackedWidget->setCurrentIndex(2);
+        }
+    else  {
+         QPalette *white = new QPalette();
+         white->setColor(QPalette::Base,Qt::white);
+        ui->Filename->setPalette(*white);
+
+
+
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
      printer.setOrientation(QPrinter::Landscape);
@@ -192,7 +229,7 @@ void Tournoi_Main::generate_Pdf()
     ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
 
 
-
+}
 }
 
 void Tournoi_Main::generate_Json()
@@ -243,6 +280,6 @@ void Tournoi_Main::choose_Filename()
 {
 
     ui->stackedWidget->setCurrentIndex(2) ;
-    connect(ui->Filename_Submit,&QPushButton::clicked, this, &Tournoi_Main::generate_Pdf);
+    connect(ui->Filename_Submit,&QPushButton::clicked, this, &Tournoi_Main::generate_Pdf,Qt::UniqueConnection);
 }
 
