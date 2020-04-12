@@ -183,29 +183,22 @@ void Tournoi_Main::remove()
 
 void Tournoi_Main::generate_Pdf()
 {
-    if(ui->Filename->text().isEmpty())
-    {       QPalette *red = new QPalette();
-           red->setColor(QPalette::Base,Qt::red);
-           if(ui->Filename->text().isEmpty())
-            {ui->Filename->setPalette(*red);}
-           ui->stackedWidget->setCurrentIndex(2);
-        }
-    else  {
-         QPalette *white = new QPalette();
-         white->setColor(QPalette::Base,Qt::white);
-        ui->Filename->setPalette(*white);
+    QString Filename = QFileDialog::getSaveFileName(this,
+           tr("Sauvegarder Table Tournois"), "C://",
+           tr("(*.pdf)"));
 
+if (!Filename.isEmpty())
 
+   { QPrinter printer(QPrinter::PrinterResolution);//Déclaration du printer qui s'occupera de la création du fichier
+    printer.setOutputFormat(QPrinter::PdfFormat);//Definition du format
+     printer.setOrientation(QPrinter::Landscape);//Definition de l'orientation , dans ce cas c'est paysage
 
-    QPrinter printer(QPrinter::PrinterResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-     printer.setOrientation(QPrinter::Landscape);
-        QString BasePath=QDir::currentPath();
-       QString Filename=BasePath.append("/").append(this->getFilename()).append(".pdf");
     printer.setOutputFileName(Filename);
+        //Définition du chemin d'accès de l'output
 
     QTextDocument doc;
-
+        //Préparationdu  document
+        //Formatage des données sous forme de tableau
     QString text("<table width=\"100%\" border=\"1\"><thead>");
     text.append("<tr>");
      for (int i = 0; i < model->columnCount(); i++) {
@@ -224,12 +217,12 @@ void Tournoi_Main::generate_Pdf()
     doc.setHtml(text);
     doc.setPageSize(printer.pageRect().size());
     doc.print(&printer);
-    QMessageBox::question(
-        this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
-    ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
+    QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
+  }
+ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
 
 
-}
+
 }
 
 void Tournoi_Main::generate_Json()

@@ -12,6 +12,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    w.centralWidget()->setStyleSheet("image: url(C:/Users/toshiba/Desktop/C++/QtApp/pics/Sportify.png)");
+
+
     Connection c;
     bool test=c.createconnect();
     if(test)
@@ -26,7 +29,7 @@ int main(int argc, char *argv[])
                     QObject::tr("connection failed.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
-    w.centralWidget()->setStyleSheet("image: url(C:/Users/toshiba/Desktop/C++/QtApp/pics/Sportify.png)");
+
     return a.exec();
 }
 

@@ -76,13 +76,13 @@ void Match_Main::on_Match_Submit_clicked()
     {     ui->Match_Visitor->setPalette(*red );error=1;}
         else {  ui->Match_Visitor->setPalette(*white); }
  if (!error)
- Db_Add_Values_To_Match_Table(ui->Match_Home->text(),ui->Match_Visitor->text(),ui->Match_date->selectedDate(), ui->Match_stadium->text(),Home_Team_Pic,Away_Team_Pic);
+ Db_Add_Values_To_Match_Table(ui->Match_Home->text(),ui->Match_Visitor->text(),ui->Match_date->selectedDate().toString("dd/MM/yyyy"), ui->Match_stadium->text(),Home_Team_Pic,Away_Team_Pic);
 }
 
 
 
 
-void Match_Main::Db_Add_Values_To_Match_Table(QString Home_Team,QString Visitor_Team , QDate Play_Date, QString Location,QString Home_Team_Pic,QString Away_Team_Pic)
+void Match_Main::Db_Add_Values_To_Match_Table(QString Home_Team,QString Visitor_Team , QString Play_Date, QString Location,QString Home_Team_Pic,QString Away_Team_Pic)
 {
     QSqlQuery query;
     query.prepare(" insert into \"Sumpark\".\"Matchs\""
@@ -202,7 +202,7 @@ void Match_Main::Db_Afficher_Liste_Matchs()
             connect(submitButton, &QPushButton::clicked, this, &Match_Main::submit);
             connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
             connect(quitButton, &QPushButton::clicked, this, &Match_Main::close);
-            connect(pdfButton,&QPushButton::clicked, this, &Match_Main::choose_Filename);
+            connect(pdfButton,&QPushButton::clicked, this, &Match_Main::generate_Pdf);
             connect(jsonButton,&QPushButton::clicked,this,&Match_Main::generate_Json);
             connect(view, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableClicked(const QModelIndex &)));
                    ui->horizontalLayout_4->addWidget(view);
@@ -257,8 +257,8 @@ void Match_Main::submit()
 void Match_Main::choose_Filename()
 {
 
-    ui->stackedWidget->setCurrentIndex(2) ;
-   connect(ui->Filename_Submit,&QPushButton::clicked, this, &Match_Main::generate_Pdf,Qt::UniqueConnection);
+  /*  ui->stackedWidget->setCurrentIndex(2) ;
+   connect(ui->Filename_Submit,&QPushButton::clicked, this, &Match_Main::generate_Pdf,Qt::UniqueConnection);*/
 }
 
 
@@ -278,29 +278,22 @@ void Match_Main::on_Filename_Cancel_clicked()
 
 void Match_Main::generate_Pdf()
 {
-    if(ui->File_name->text().isEmpty())
-    {       QPalette *red = new QPalette();
-           red->setColor(QPalette::Base,Qt::red);
-           if(ui->File_name->text().isEmpty())
-            {ui->File_name->setPalette(*red);}
-           ui->stackedWidget->setCurrentIndex(2);
-        }
-    else  {
-         QPalette *white = new QPalette();
-        white->setColor(QPalette::Base,Qt::white);
-    ui->File_name->setPalette(*white);
-    QPrinter printer(QPrinter::PrinterResolution);//Déclaration du printer qui s'occupera de la création du fichier
+
+
+    QString Filename = QFileDialog::getSaveFileName(this,
+           tr("Sauvegarder Table Matchs"), "C://",
+           tr("(*.pdf)"));
+if (!Filename.isEmpty())
+
+   { QPrinter printer(QPrinter::PrinterResolution);//Déclaration du printer qui s'occupera de la création du fichier
     printer.setOutputFormat(QPrinter::PdfFormat);//Definition du format
      printer.setOrientation(QPrinter::Landscape);//Definition de l'orientation , dans ce cas c'est paysage
-     QString BasePath=QDir::currentPath();//Récupération du chemin d'accès de
-                                                               //l'exectable de l'application
-     QString Filename=BasePath.append("/").append(this->getFilename()).append(".pdf");
-        //Récupération du nom du fichier auquel on ajoute l'extension
+
     printer.setOutputFileName(Filename);
         //Définition du chemin d'accès de l'output
 
     QTextDocument doc;
-        //Préparationdu  document
+        //Préparation du  document
         //Formatage des données sous forme de tableau
     QString text("<table width=\"100%\" border=\"1\"><thead>");
     text.append("<tr>");
@@ -319,15 +312,22 @@ void Match_Main::generate_Pdf()
     text.append("</tbody></table>");
     doc.setHtml(text);
     doc.setPageSize(printer.pageRect().size());
-    qDebug()<<"once";
+    doc.print(&printer);
     QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
-    ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
-    }
+  }
+ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
+
 }
 
 void Match_Main::generate_Json()
 {
-     QJsonObject obj;//L'objet
+    QString Filename = QFileDialog::getSaveFileName(this,
+           tr("Sauvegarder Table Matchs"), "C://",
+           tr("(*.json)"));
+
+    if (!Filename.isEmpty())
+
+    { QJsonObject obj;//L'objet
        QJsonArray Matchs;//Création d'un Tableau intitulé Matchs
         QSqlQuery query;
        query.exec("select * from \"Sumpark\".\"Matchs\""); // Récupération des données de la base
@@ -342,12 +342,12 @@ void Match_Main::generate_Json()
            Matchs.append(Match);//(5)
        }
        obj["Matchs"] = Matchs;//(6)
-        QString Filename=QDir::currentPath().append("/Matchs.json");
-     QFile file(Filename); //Création du fichier
+
+       QFile file(Filename); //Création du fichier
        file.open(QFile::WriteOnly);
        file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
        QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
-
+}
 
 }
 void Match_Main::onTableClicked(const QModelIndex &index)

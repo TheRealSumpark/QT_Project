@@ -41,7 +41,7 @@
     <bool>true</bool>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page_0">
     <property name="enabled">
@@ -60,7 +60,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="Match_Visitor">
         <property name="text">
-         <string>Real Madrid</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -74,7 +74,7 @@
       <item row="2" column="0">
        <widget class="QLineEdit" name="Match_Home">
         <property name="text">
-         <string>Barcelona</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -205,7 +205,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QCalendarWidget" name="Match_date"/>
+       <widget class="QCalendarWidget" name="Match_date">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_3">

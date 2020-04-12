@@ -2,7 +2,7 @@
 #define TOURNOI_MAIN_H
 
 #include <QDialog>
-
+#include <QFileDialog>
 #include <QDialog>
 #include <QtDebug>
 #include <QtSql>
