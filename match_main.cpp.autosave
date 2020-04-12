@@ -14,7 +14,7 @@ Match_Main::Match_Main(QWidget *parent) :
      QPixmap Background_Pic("C:/Users/toshiba/Desktop/C++/QtApp/pics/match.jpg");
      ui->Background_pic->setPixmap(Background_Pic.scaled(ui->Background_pic->width(),ui->Background_pic->height()));
 
-
+    ui->Match_Home(r)
 
 
 
