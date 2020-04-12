@@ -38,7 +38,7 @@ class Tournoi_Main : public QDialog
 public:
     explicit Tournoi_Main(QWidget *parent = nullptr);
     ~Tournoi_Main();
-    QString getFilename();
+
     void Db_Afficher_Liste_Tournois();
     void Db_Add_Values_To_Tournois_Table(QString Nom ,QString Categorie,QString Date_Lancement, int Nb_Participants);
 
@@ -49,9 +49,9 @@ private slots:
     void submit();
     void remove();
     void generate_Pdf();
-    void choose_Filename();
+
     void generate_Json();
-    void on_Filename_Cancel_clicked();
+
 
 private:
     Ui::Tournoi_Main *ui;

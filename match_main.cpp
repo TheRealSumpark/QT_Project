@@ -254,28 +254,6 @@ void Match_Main::submit()
 
 
 
-void Match_Main::choose_Filename()
-{
-
-  /*  ui->stackedWidget->setCurrentIndex(2) ;
-   connect(ui->Filename_Submit,&QPushButton::clicked, this, &Match_Main::generate_Pdf,Qt::UniqueConnection);*/
-}
-
-
-
- QString Match_Main:: getFilename()
- {
-        return ui->File_name->text();
- }
-
-void Match_Main::on_Filename_Cancel_clicked()
-{
-    QPalette *white = new QPalette();
-    white->setColor(QPalette::Base,Qt::white);
-   ui->File_name->setPalette(*white);
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
 void Match_Main::generate_Pdf()
 {
 

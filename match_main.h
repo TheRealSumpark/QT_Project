@@ -40,7 +40,7 @@ public:
     ~Match_Main();
     void Db_Afficher_Liste_Matchs();
     void Db_Add_Values_To_Match_Table(QString Home_Team,QString Visitor_Team , QString Play_Date, QString Location,QString Home_Team_Pic,QString Away_Team_Pic);
-    QString getFilename();
+
     //void Db_Create_Table();
 
 
@@ -56,8 +56,6 @@ private slots:
     void on_Match_Away_Pic_clicked();
     void generate_Pdf();
     void on_Match_Submit_clicked();
-    void choose_Filename();
-    void on_Filename_Cancel_clicked();
     void generate_Json();
 
 

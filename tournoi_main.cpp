@@ -130,7 +130,7 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
              connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
              connect(quitButton, &QPushButton::clicked, this, &Tournoi_Main::close);
              connect(deleteButton,&QPushButton::clicked, this, &Tournoi_Main::remove);
-             connect(pdfButton,&QPushButton::clicked, this, &Tournoi_Main::choose_Filename);
+             connect(pdfButton,&QPushButton::clicked, this, &Tournoi_Main::generate_Pdf);
              connect(jsonButton,&QPushButton::clicked,this,&Tournoi_Main::generate_Json);
 
 
@@ -228,10 +228,13 @@ ui->stackedWidget->setCurrentIndex(1);//Nous renvoie vers la pages d'affichage
 void Tournoi_Main::generate_Json()
 {
 
-   QJsonObject obj;//root object
+    QString Filename = QFileDialog::getSaveFileName(this,
+           tr("Sauvegarder Table Tournois"), "C://",
+           tr("(*.json)"));
 
+    if (!Filename.isEmpty())
+   {   QJsonObject obj;//root object
        QJsonArray Tournois;//(2)
-
         QSqlQuery query;
 
        query.exec("select * from \"Sumpark\".\"TOURNOIS\"");
@@ -247,32 +250,13 @@ void Tournoi_Main::generate_Json()
        }
        obj["Tournois"] = Tournois;//(6)
 
-       QString Filename=QDir::currentPath().append("/Tournois.json");
     QFile file(Filename); //Création du fichier
       file.open(QFile::WriteOnly);
       file.write(QJsonDocument(obj).toJson(QJsonDocument::Indented));
       QMessageBox::question(
           this, tr("File Saved in :"), Filename, QMessageBox::Ok );//POPUP indiquant le chemin d'accès du fichier
 
-
-
 }
 
-
-QString Tournoi_Main:: getFilename()
-{
-       return ui->Filename->text();
-}
-
-void Tournoi_Main::on_Filename_Cancel_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void Tournoi_Main::choose_Filename()
-{
-
-    ui->stackedWidget->setCurrentIndex(2) ;
-    connect(ui->Filename_Submit,&QPushButton::clicked, this, &Tournoi_Main::generate_Pdf,Qt::UniqueConnection);
 }
 
