@@ -136,7 +136,7 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", Q_NULLPTR));
+        Dialog->setWindowTitle(QApplication::translate("Ajouter", "Ajouter", Q_NULLPTR));
         Ajouter_joueur->setText(QApplication::translate("Dialog", "Appliquer", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("Dialog", "Retour", Q_NULLPTR));
         in_nom->setText(QString());

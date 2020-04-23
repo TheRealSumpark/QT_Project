@@ -148,7 +148,7 @@ public:
 
     void retranslateUi(QDialog *ajouter_joueur_equipe)
     {
-        ajouter_joueur_equipe->setWindowTitle(QApplication::translate("ajouter_joueur_equipe", "Dialog", Q_NULLPTR));
+        ajouter_joueur_equipe->setWindowTitle(QApplication::translate("ajouter_joueur_equipe", "Ajouter", Q_NULLPTR));
         label_9->setText(QApplication::translate("ajouter_joueur_equipe", "Liste des joueurs:", Q_NULLPTR));
         label_6->setText(QApplication::translate("ajouter_joueur_equipe", "Id:", Q_NULLPTR));
         label_2->setText(QApplication::translate("ajouter_joueur_equipe", "Prenom:", Q_NULLPTR));

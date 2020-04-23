@@ -100,7 +100,7 @@ public:
 
     void retranslateUi(QDialog *Supprimer_joueur)
     {
-        Supprimer_joueur->setWindowTitle(QApplication::translate("Supprimer_joueur", "Dialog", Q_NULLPTR));
+        Supprimer_joueur->setWindowTitle(QApplication::translate("Supprimer_joueur", "Supprimer", Q_NULLPTR));
         pushButton->setText(QApplication::translate("Supprimer_joueur", "Supprimer", Q_NULLPTR));
         label->setText(QApplication::translate("Supprimer_joueur", "Veuillez selectionner l'id de joueur a supprimer d'apes le tableau suivant:", Q_NULLPTR));
         label_sup->setText(QString());

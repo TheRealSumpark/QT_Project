@@ -108,7 +108,7 @@ public:
 
     void retranslateUi(QDialog *supprimer_equipe)
     {
-        supprimer_equipe->setWindowTitle(QApplication::translate("supprimer_equipe", "Dialog", Q_NULLPTR));
+        supprimer_equipe->setWindowTitle(QApplication::translate("supprimer_equipe", "Supprimer", Q_NULLPTR));
         label_3->setText(QApplication::translate("supprimer_equipe", "Manager de l'\303\251quipe:", Q_NULLPTR));
         label_7->setText(QApplication::translate("supprimer_equipe", "Nom d'\303\251quipe:", Q_NULLPTR));
         label_10->setText(QApplication::translate("supprimer_equipe", "Liste des d'\303\251quipes:", Q_NULLPTR));

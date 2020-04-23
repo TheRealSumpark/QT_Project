@@ -4,12 +4,12 @@ vector <QString> StatClass::GetVectStat(){
 
 vector <QString> vectStat;
 QSqlQuery query;
-query.prepare("Select * from Employe");
+query.prepare("Select * from JOUEUR");
 query.exec();
 
 while (query.next())
 {
-    vectStat.push_back(query.value(10).toString());
+    vectStat.push_back(query.value(6).toString());
 }
 return vectStat;
 }

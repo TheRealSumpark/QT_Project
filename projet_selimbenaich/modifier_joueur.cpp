@@ -101,7 +101,7 @@ void Modifier_joueur::Db_Afficher_Liste_Matchs()
                    ui->horizontalLayout_2->addWidget(buttonBox);
 
 
-                    setWindowTitle(tr("Liste Des joueurs"));
+                    setWindowTitle(tr("Modifier"));
 
 
                     /*qDebug()<<view->selectionModel()->selectedIndexes();

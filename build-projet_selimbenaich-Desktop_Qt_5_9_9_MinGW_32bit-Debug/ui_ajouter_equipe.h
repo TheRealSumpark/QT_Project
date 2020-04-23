@@ -115,7 +115,7 @@ public:
 
     void retranslateUi(QDialog *Ajouter_equipe)
     {
-        Ajouter_equipe->setWindowTitle(QApplication::translate("Ajouter_equipe", "Dialog", Q_NULLPTR));
+        Ajouter_equipe->setWindowTitle(QApplication::translate("Ajouter_equipe", "Ajouter", Q_NULLPTR));
         Ajouter_equipe_2->setText(QApplication::translate("Ajouter_equipe", "Appliquer", Q_NULLPTR));
         label_2->setText(QApplication::translate("Ajouter_equipe", "Categorie:", Q_NULLPTR));
         b_image->setText(QApplication::translate("Ajouter_equipe", "image", Q_NULLPTR));

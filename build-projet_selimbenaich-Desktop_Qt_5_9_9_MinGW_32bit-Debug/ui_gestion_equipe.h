@@ -71,7 +71,7 @@ public:
 
     void retranslateUi(QDialog *gestion_equipe)
     {
-        gestion_equipe->setWindowTitle(QApplication::translate("gestion_equipe", "Dialog", Q_NULLPTR));
+        gestion_equipe->setWindowTitle(QApplication::translate("gestion_equipe", "Equipe", Q_NULLPTR));
         label->setText(QString());
         Afficher_equipe->setText(QApplication::translate("gestion_equipe", "Afficher une \303\251quipe", Q_NULLPTR));
         Modifier_equipe->setText(QApplication::translate("gestion_equipe", "Modifier une \303\251quipe", Q_NULLPTR));

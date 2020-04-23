@@ -272,7 +272,7 @@ public:
 
     void retranslateUi(QDialog *modifier_equipe)
     {
-        modifier_equipe->setWindowTitle(QApplication::translate("modifier_equipe", "Dialog", Q_NULLPTR));
+        modifier_equipe->setWindowTitle(QApplication::translate("modifier_equipe", "Modifier", Q_NULLPTR));
         label->setText(QApplication::translate("modifier_equipe", "Veuillez selectionner le nom d'\303\251quipe a modifier d'apes le tableau suivant:", Q_NULLPTR));
         label_3->setText(QApplication::translate("modifier_equipe", "Manager:", Q_NULLPTR));
         in_manager->setText(QString());

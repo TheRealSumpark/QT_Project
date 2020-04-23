@@ -34,7 +34,7 @@ public:
     void setupUi(QDialog *Afficher_joueur)
     {
         if (Afficher_joueur->objectName().isEmpty())
-            Afficher_joueur->setObjectName(QStringLiteral("Afficher_joueur"));
+            Afficher_joueur->setObjectName(QStringLiteral("Statistiques"));
         Afficher_joueur->resize(759, 590);
         tableView = new QTableView(Afficher_joueur);
         tableView->setObjectName(QStringLiteral("tableView"));
@@ -50,7 +50,7 @@ public:
         image_2->setGeometry(QRect(490, 40, 151, 241));
         customPlot = new QCustomPlot(Afficher_joueur);
         customPlot->setObjectName(QStringLiteral("customPlot"));
-        customPlot->setGeometry(QRect(10, 320, 561, 251));
+        customPlot->setGeometry(QRect(10, 10, 711, 581));
         label_affich->raise();
         image_2->raise();
         tableView->raise();
@@ -64,9 +64,9 @@ public:
 
     void retranslateUi(QDialog *Afficher_joueur)
     {
-        Afficher_joueur->setWindowTitle(QApplication::translate("Afficher_joueur", "Dialog", Q_NULLPTR));
+        Afficher_joueur->setWindowTitle(QApplication::translate("Statistiques", "Statistiques", Q_NULLPTR));
         label_affich->setText(QString());
-        pushButton->setText(QApplication::translate("Afficher_joueur", "Retour", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("Statistiques", "Retour", Q_NULLPTR));
         image_2->setText(QString());
     } // retranslateUi
 

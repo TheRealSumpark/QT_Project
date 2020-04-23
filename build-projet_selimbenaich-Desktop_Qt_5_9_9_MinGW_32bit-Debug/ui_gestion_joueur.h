@@ -71,11 +71,11 @@ public:
 
     void retranslateUi(QDialog *gestion_joueur)
     {
-        gestion_joueur->setWindowTitle(QApplication::translate("gestion_joueur", "Dialog", Q_NULLPTR));
+        gestion_joueur->setWindowTitle(QApplication::translate("gestion_joueur", "Joueur", Q_NULLPTR));
         Modifier_joueur->setText(QApplication::translate("gestion_joueur", "Modifier un joueur", Q_NULLPTR));
         label->setText(QString());
         Supprimer_joueur->setText(QApplication::translate("gestion_joueur", "Supprimer un joueur", Q_NULLPTR));
-        Afficher_joueur->setText(QApplication::translate("gestion_joueur", "Afficher un joueur", Q_NULLPTR));
+        Afficher_joueur->setText(QApplication::translate("gestion_joueur", "Statistiques", Q_NULLPTR));
         Ajouter_joueur->setText(QApplication::translate("gestion_joueur", "Ajouter un joueur", Q_NULLPTR));
         Afficher_joueur_2->setText(QApplication::translate("gestion_joueur", "Pr\303\251c\303\251dent", Q_NULLPTR));
     } // retranslateUi

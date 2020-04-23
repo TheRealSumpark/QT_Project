@@ -73,7 +73,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("Menu", "Menu", Q_NULLPTR));
         label->setText(QString());
         Gestion_joueur->setText(QApplication::translate("MainWindow", "Joueur", Q_NULLPTR));
         Modifier_joueur->setText(QApplication::translate("MainWindow", "Equipe", Q_NULLPTR));

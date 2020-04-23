@@ -68,7 +68,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Afficher un joueur</string>
+    <string>Statistiques</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Ajouter_joueur">

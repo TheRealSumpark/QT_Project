@@ -103,7 +103,7 @@ public:
 
     void retranslateUi(QDialog *afficher_equipe)
     {
-        afficher_equipe->setWindowTitle(QApplication::translate("afficher_equipe", "Dialog", Q_NULLPTR));
+        afficher_equipe->setWindowTitle(QApplication::translate("afficher_equipe", "liste des équipes", Q_NULLPTR));
         label_3->setText(QApplication::translate("afficher_equipe", "Manager de l'\303\251quipe:", Q_NULLPTR));
         label_10->setText(QApplication::translate("afficher_equipe", "Liste des d'\303\251quipes:", Q_NULLPTR));
         image_2->setText(QString());

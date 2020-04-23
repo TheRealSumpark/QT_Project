@@ -97,7 +97,7 @@ public:
 
     void retranslateUi(QDialog *Modifier_joueur)
     {
-        Modifier_joueur->setWindowTitle(QApplication::translate("Modifier_joueur", "Dialog", Q_NULLPTR));
+        Modifier_joueur->setWindowTitle(QApplication::translate("Modifier_joueur", "Modifier", Q_NULLPTR));
         label->setText(QApplication::translate("Modifier_joueur", "Veuillez selectionner l'id de joueur a modifier d'apes le tableau suivant:", Q_NULLPTR));
         label_modif->setText(QString());
         b_image->setText(QApplication::translate("Modifier_joueur", "Image", Q_NULLPTR));
