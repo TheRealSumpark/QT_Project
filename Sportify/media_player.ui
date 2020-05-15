@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MEDIA_PLAYER</class>
+ <widget class="QMainWindow" name="MEDIA_PLAYER">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>646</width>
+    <height>444</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>BottomToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+   <addaction name="Play_Media"/>
+   <addaction name="separator"/>
+   <addaction name="Pause_Media"/>
+   <addaction name="separator"/>
+   <addaction name="Stop_Media"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="Play_Media">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/resources/Icons/Play.png</normaloff>:/resources/Icons/Play.png</iconset>
+   </property>
+   <property name="text">
+    <string>Play_Media</string>
+   </property>
+  </action>
+  <action name="Pause_Media">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/resources/Icons/Pause.png</normaloff>:/resources/Icons/Pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pause_Media</string>
+   </property>
+  </action>
+  <action name="Stop_Media">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/resources/Icons/Stop.png</normaloff>:/resources/Icons/Stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop_Media</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

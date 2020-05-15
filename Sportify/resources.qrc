@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>Icons/Pause.png</file>
+        <file>Icons/Play.png</file>
+        <file>Icons/Stop.png</file>
+        <file>Icons/Inori.bmp</file>
+    </qresource>
+</RCC>
