@@ -10,7 +10,7 @@ LOGO::LOGO(QWidget *parent) :
     ui->setupUi(this);
      this->setFixedSize(720,480);
     player->setVideoOutput(video);
-    player->setMedia(QUrl::fromLocalFile("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/1999630 2.avi"));
+    player->setMedia(QUrl::fromLocalFile("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/199963.avi"));
     video->setGeometry(0,0,720,480);
     video->setParent(ui->Logo);
 

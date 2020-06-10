@@ -5,6 +5,7 @@
 #include "gestion_joueur.h"
 #include "gestion_equipe.h"
 #include "video_stream.h"
+#include "fournisseur.h"
 
 #include <QStackedWidget>
 #include <QMediaPlayerControl>
@@ -272,4 +273,11 @@ void MainWindow::on_Main_Menu_Regarder_clicked()
 
     VIDEO_STREAM  *v =new VIDEO_STREAM ;
     v->show();
+}
+
+void MainWindow::on_Main_button_ajouter_fournisseur_clicked()
+{
+    Fournisseur f;
+    f.exec();
+
 }

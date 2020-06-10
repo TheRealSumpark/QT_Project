@@ -60,6 +60,8 @@ private slots:
 
     void on_Main_Menu_Regarder_clicked();
 
+    void on_Main_button_ajouter_fournisseur_clicked();
+
 private:
     Ui::MainWindow *ui;
 

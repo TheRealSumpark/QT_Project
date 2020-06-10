@@ -21,6 +21,7 @@ SOURCES += \
     ajouter_equipe.cpp \
     ajouter_joueur_equipe.cpp \
     connection.cpp \
+    fournisseur.cpp \
     gestion_equipe.cpp \
     gestion_joueur.cpp \
     logo.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     ajouter_equipe.h \
     ajouter_joueur_equipe.h \
     connection.h \
+    fournisseur.h \
     gestion_equipe.h \
     gestion_joueur.h \
     logo.h \
@@ -67,6 +69,7 @@ FORMS += \
     afficher_joueur.ui \
     ajouter_equipe.ui \
     ajouter_joueur_equipe.ui \
+    fournisseur.ui \
     gestion_equipe.ui \
     gestion_joueur.ui \
     logo.ui \

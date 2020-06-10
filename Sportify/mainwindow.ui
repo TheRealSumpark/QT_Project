@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Logo"/>
     <widget class="QWidget" name="Menu">
@@ -54,7 +54,7 @@
        <string>Regarder</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="Main_Menu_Taib">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -64,7 +64,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Module Fournisseur/Equipements</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_3">
@@ -127,6 +127,32 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="Main_button_Afficher_Replay">
+         <property name="text">
+          <string>Ajouter Replay</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>80</y>
+        <width>221</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="Main_Button_Ajouter_Replay">
+         <property name="text">
+          <string>Afficher les  replays</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="Main_button_afficher_tournois">
          <property name="text">
           <string>Afficher les tournois</string>
@@ -137,32 +163,6 @@
         <widget class="QPushButton" name="Main_button_afficher_matchs">
          <property name="text">
           <string>Afficher les matchs</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>110</y>
-        <width>221</width>
-        <height>201</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QPushButton" name="Main_button_Afficher_Replay">
-         <property name="text">
-          <string>Ajouter Replay</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Main_Button_Ajouter_Replay">
-         <property name="text">
-          <string>Afficher les  replays</string>
          </property>
         </widget>
        </item>
@@ -224,6 +224,55 @@
      </widget>
     </widget>
     <widget class="QWidget" name="Watch"/>
+    <widget class="QWidget" name="Taib">
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>50</y>
+        <width>221</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QPushButton" name="Go_Back_3">
+         <property name="text">
+          <string>Back</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Main_button_ajouter_fournisseur">
+         <property name="text">
+          <string>Ajouter Fournisseur</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Main_button_ajouter_equipement">
+         <property name="text">
+          <string>Ajouter Equipement</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Main_button_afficher_fournisseurs">
+         <property name="text">
+          <string>Afficher les fournisseurs</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Main_button_afficher_equipements">
+         <property name="text">
+          <string>Afficher les equipements</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -138,7 +138,7 @@ void Tournoi_Main::Db_Afficher_Liste_Tournois()
 
                     ui->horizontalLayout->addWidget(view);
                     ui->horizontalLayout->addWidget(buttonBox);
-                     ui->horizontalLayout_3->setAlignment(Qt::AlignHCenter);
+                    ui->horizontalLayout_3->setAlignment(Qt::AlignHCenter);
                     ui->horizontalLayout_3->addWidget(buttonBox1);
 
                      setWindowTitle(tr("Cached Table"));
