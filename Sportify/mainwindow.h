@@ -79,6 +79,10 @@ private slots:
 
     void on_Main_button_afficher_equipements_clicked();
 
+    void on_Main_Menu_Khaled_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

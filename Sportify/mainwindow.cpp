@@ -8,7 +8,7 @@
 #include "fournisseur.h"
 #include "evenement.h"
 #include "equipements.h"
-
+#include "home.h"
 
 
 
@@ -42,7 +42,9 @@ void MainWindow::Main_Menu()
 {
 
      ui->stackedWidget->setCurrentIndex(1);
-      this->setStyleSheet("background-image: url(../images_projet/Sportify.png)");
+      this->setStyleSheet("MainWindow {background-image: url(../images_projet/Sportify.png);}");
+    //QPixmap Background_Pic("../images_projet/Equipements_Background.jpg");
+    // ui->Background_Pic->setPixmap(Background_Pic.scaled(ui->Background_Pic->width(),ui->Background_Pic->height()));
       Connection c;
         bool test=c.createconnect();
         if(test)
@@ -327,4 +329,15 @@ void MainWindow::on_Main_button_afficher_equipements_clicked()
     Equipements e;
     e.Afficher_Liste_Equipements();
     e.exec();
+}
+
+void MainWindow::on_Main_Menu_Khaled_clicked()
+{
+    home *h= new home();
+    h->show();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    this->close();
 }

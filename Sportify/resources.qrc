@@ -3,6 +3,21 @@
         <file>Icons/Pause.png</file>
         <file>Icons/Play.png</file>
         <file>Icons/Stop.png</file>
-        <file>Icons/Inori.bmp</file>
+        <file>../Resources/back.png</file>
+        <file>../Resources/close.png</file>
+        <file>../Resources/delete.png</file>
+        <file>../Resources/email.png</file>
+        <file>../Resources/load.png</file>
+        <file>../Resources/pdf.png</file>
+        <file>../Resources/stadium.png</file>
+        <file>../Resources/worker.png</file>
+        <file>../Resources/add.png</file>
+        <file>../images_projet/Sportify.png</file>
+        <file>../Resources/module equipe.png</file>
+        <file>../Resources/module equipement.png</file>
+        <file>../Resources/module event.png</file>
+        <file>../Resources/module regarder.png</file>
+        <file>../Resources/module tournois.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

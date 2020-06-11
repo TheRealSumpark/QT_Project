@@ -6,91 +6,310 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>720</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">.QLabel
+{
+	color:black;
+	font-size:14px;
+	qproperty-alignment: AlignCenter;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
-      <width>671</width>
-      <height>521</height>
+      <y>19</y>
+      <width>701</width>
+      <height>701</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Logo"/>
     <widget class="QWidget" name="Menu">
      <widget class="QPushButton" name="Main_Menu_Selim">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>210</y>
-        <width>191</width>
-        <height>41</height>
+        <x>400</x>
+        <y>20</y>
+        <width>181</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
       <property name="text">
-       <string>Module Equipe/Joueurs</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/module equipe.png</normaloff>:/resources/Resources/module equipe.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="Main_Menu_Regarder">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>320</y>
-        <width>191</width>
-        <height>41</height>
+        <x>400</x>
+        <y>250</y>
+        <width>181</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
       <property name="text">
-       <string>Regarder</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/module regarder.png</normaloff>:/resources/Resources/module regarder.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="Main_Menu_Taib">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>320</y>
-        <width>191</width>
-        <height>41</height>
+        <x>400</x>
+        <y>130</y>
+        <width>181</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
       <property name="text">
-       <string>Module Fournisseur/Equipements</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/module equipement.png</normaloff>:/resources/Resources/module equipement.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="Main_Menu_Oussema">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>210</y>
+        <x>90</x>
+        <y>130</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/module event.png</normaloff>:/resources/Resources/module event.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Main_Menu_Yassine">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>20</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/module tournois.png</normaloff>:/resources/Resources/module tournois.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Main_Menu_Khaled">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>250</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/stadium.png</normaloff>:/resources/Resources/stadium.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>67</width>
+        <height>128</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>390</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:30px;
+background-color:#262525;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/resources/Resources/close.png</normaloff>:/resources/Resources/close.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>90</y>
         <width>191</width>
-        <height>41</height>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Module Matchs/Tournois</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>200</y>
+        <width>171</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Module Events/Guests</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Main_Menu_Yassine">
+     <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>100</y>
-        <width>200</width>
-        <height>41</height>
+        <x>100</x>
+        <y>320</y>
+        <width>171</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Module Matchs/Tournois</string>
+       <string>Module Employes/Terrains</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>320</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Regarder</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>90</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Module Equipes/Joueurs</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>200</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Module Fourniseurs/Equipements</string>
       </property>
      </widget>
     </widget>
@@ -288,18 +507,9 @@
     <widget class="QWidget" name="Oussema"/>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

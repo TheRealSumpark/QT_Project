@@ -28,6 +28,7 @@ SOURCES += \
     gestion_equipe.cpp \
     gestion_joueur.cpp \
     guests.cpp \
+    home.cpp \
     logo.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
     modifier_joueur.cpp \
     qcustomplot.cpp \
     replay.cpp \
+    smtp.cpp \
     statclass.cpp \
     stati.cpp \
     supprimer_equipe.cpp \
@@ -58,6 +60,7 @@ HEADERS += \
     gestion_equipe.h \
     gestion_joueur.h \
     guests.h \
+    home.h \
     logo.h \
     mainwindow.h \
     match_main.h \
@@ -66,6 +69,7 @@ HEADERS += \
     modifier_joueur.h \
     qcustomplot.h \
     replay.h \
+    smtp.h \
     statclass.h \
     stati.h \
     supprimer_equipe.h \
@@ -84,6 +88,7 @@ FORMS += \
     fournisseur.ui \
     gestion_equipe.ui \
     gestion_joueur.ui \
+    home.ui \
     logo.ui \
     mainwindow.ui \
     match_main.ui \

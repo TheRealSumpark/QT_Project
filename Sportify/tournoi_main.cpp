@@ -31,10 +31,10 @@ void Tournoi_Main::on_Tournoi_Main_Submit_clicked()
     QPalette *white = new QPalette();
      red->setColor(QPalette::Base,Qt::red);
       white->setColor(QPalette::Base,Qt::white);
-        if(ui->Tournoi_Nom->text().isEmpty())
+        if(ui->Tournoi_Nom->text().trimmed().isEmpty())
     {     ui->Tournoi_Nom->setPalette(*red) ; error=1;}
         else {  ui->Tournoi_Nom->setPalette(*white); }
-        if(ui->Tournoi_Categorie->text().isEmpty())
+        if(ui->Tournoi_Categorie->text().trimmed().isEmpty())
     {       ui->Tournoi_Categorie->setPalette(*red)  ;error=1;}
         else {  ui->Tournoi_Categorie->setPalette(*white); }
         if(ui->Tournoi_NbParticipants->value()<=0)

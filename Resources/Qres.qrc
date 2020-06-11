@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>sportify.png</file>
+        <file>../stadium.png</file>
+        <file>../worker.png</file>
+        <file>../email.png</file>
+        <file>../close.png</file>
+        <file>../add.png</file>
+        <file>../back.png</file>
+        <file>../load.png</file>
+        <file>../pdf.png</file>
+        <file>../delete.png</file>
+    </qresource>
+    <qresource prefix="/buttons"/>
+</RCC>
