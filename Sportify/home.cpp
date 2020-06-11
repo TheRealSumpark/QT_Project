@@ -99,7 +99,7 @@ void home::on_add_clicked()
 
     QSqlQuery query;
 
-    query.prepare("INSERT INTO EMPLOYES (NOM,PRENOM,AGE,SALAIRE,POST) values ('"+nom+"','"+prenom+"','"+age+"','"+salaire+"','"+post+"')");
+    query.prepare("INSERT INTO \"Sportify\".\"EMPLOYES\" (NOM,PRENOM,AGE,SALAIRE,POST) values ('"+nom+"','"+prenom+"','"+age+"','"+salaire+"','"+post+"')");
 
 
 
@@ -107,12 +107,16 @@ void home::on_add_clicked()
 
     if (query.exec()) {
         //successful
-        QMessageBox :: information(this,"ajouter","success");
+        QMessageBox::information(nullptr, QObject::tr("add"),
+                    QObject::tr("add successful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else {
         // unsuccessful either no match or bad SQL
-            QMessageBox::warning(this,"ajouter","error failed"),query.lastError().text();
+        QMessageBox::warning(nullptr, QObject::tr("add"),
+                    QObject::tr("add unsuccessful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
     }
 
 
@@ -160,20 +164,26 @@ void home::on_delete_2_clicked()
 
     QSqlQuery query;
 
-    query.prepare("Delete from EMPLOYES where NOM='"+nom+"'");
+    query.prepare("Delete from \"Sportify\".\"EMPLOYES\" where NOM='"+nom+"'");
 
 
 
 
-
-    if (query.exec()) {
+    query.exec();
+        if (query.numRowsAffected()>0) {
         //successful
-        QMessageBox :: information(this,"delete","success");
+        QMessageBox::information(nullptr, QObject::tr("delete"),
+                    QObject::tr("delete successful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
 
     }
     else {
         // unsuccessful either no match or bad SQL
-            QMessageBox::warning(this,"delete","error failed"),query.lastError().text();
+
+        QMessageBox::warning(nullptr, QObject::tr("delete"),
+                    QObject::tr("delete unsuccessful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
     }
 
 }
@@ -184,6 +194,7 @@ void home::on_load_table_clicked()
         //QSqlQueryModel * modal = new QSqlQueryModel();
         conn.createconnect();
        // QSqlQuery * qry = new QSqlQuery(conn.db);
+
 /*
         qry -> prepare("select NOM  from EMPLOYES"); ,PRENOM,AGE,SALAIRE,POST
         qry ->exec();
@@ -201,7 +212,7 @@ void home::on_load_table_clicked()
         ui->tableView_2->setModel(m);
         ui->ta<bleView_2->setSortingEnabled(true);*/
         modal = new QSqlTableModel(this);
-          modal->setTable("EMPLOYES");
+          modal->setTable("\"Sportify\".\"EMPLOYES\"");
         //modal->setQuery("select NOM  from EMPLOYES");
         modal ->select();
 
@@ -242,7 +253,7 @@ void home::on_pdf_clicked()
        QSqlQueryModel * Modal=new  QSqlQueryModel();
 
        QSqlQuery qry;
-        qry.prepare("SELECT * FROM EMPLOYES");
+        qry.prepare("SELECT * FROM \"Sportify\".\"EMPLOYES\"");
         qry.exec();
         Modal->setQuery(qry);
         table_employes.setModel(Modal);
@@ -383,7 +394,7 @@ void home::on_add_stade_clicked()
 
            QSqlQuery query;
            if (!error)
-           query.prepare("INSERT INTO stades (NOM,LOCALISATION,NBEMPLOYE,ADRESS,FIELD_SIZE) values ('"+nom+"','"+localisation+"','"+nbemploye+"','"+capacite+"','"+F_size+"')");
+           query.prepare("INSERT INTO \"Sportify\".\"STADES\" (NOM,LOCALISATION,NBEMPLOYE,CAPACITE,FIELD_SIZE) values ('"+nom+"','"+localisation+"','"+nbemploye+"','"+capacite+"','"+F_size+"')");
 
 
 
@@ -391,12 +402,18 @@ void home::on_add_stade_clicked()
 
            if (query.exec()) {
                //successful
-               QMessageBox :: information(this,"ajouter","success");
+               QMessageBox::information(nullptr, QObject::tr("add"),
+                           QObject::tr("add successful .\n"
+                                       "Click Cancel to exit."), QMessageBox::Cancel);
+
 
            }
            else {
                // unsuccessful either no match or bad SQL
-                   QMessageBox::warning(this,"ajouter","error failed"),query.lastError().text();
+               QMessageBox::warning(nullptr, QObject::tr("add"),
+                           QObject::tr("add unsuccessful .\n"
+                                       "Click Cancel to exit."), QMessageBox::Cancel);
+
            }
 
 }
@@ -424,7 +441,7 @@ void home::on_load_table_stade_clicked()
     ui->tableView_2->setModel(m);
     ui->ta<bleView_2->setSortingEnabled(true);*/
     modal = new QSqlTableModel(this);
-      modal->setTable("STADES");
+      modal->setTable("\"Sportify\".\"STADES\"");
     //modal->setQuery("select NOM  from EMPLOYES");
     modal ->select();
 
@@ -445,20 +462,24 @@ void home::on_delete_stade_clicked()
 
     QSqlQuery query;
 
-    query.prepare("Delete from STADES where NOM='"+nom+"'");
+    query.prepare("Delete from \"Sportify\".\"STADES\" where NOM='"+nom+"'");
 
 
 
 
-
-    if (query.exec()) {
+query.exec();
+    if (query.numRowsAffected()>0) {
         //successful
-        QMessageBox :: information(this,"delete","success");
+        QMessageBox::information(nullptr, QObject::tr("delete"),
+                    QObject::tr("delete successful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else {
         // unsuccessful either no match or bad SQL
-            QMessageBox::warning(this,"delete","error failed"),query.lastError().text();
+        QMessageBox::warning(nullptr, QObject::tr("delete"),
+                    QObject::tr("delete unsuccessful .\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
     }
 }
 
@@ -469,7 +490,7 @@ void home::on_pdf_2_clicked()
        QSqlQueryModel * Modal=new  QSqlQueryModel();
 
        QSqlQuery qry;
-        qry.prepare("SELECT * FROM STADES");
+        qry.prepare("SELECT * FROM \"Sportify\".\"STADES\"");
         qry.exec();
         Modal->setQuery(qry);
         table_stade.setModel(Modal);
