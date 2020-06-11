@@ -8,7 +8,7 @@ Replay::Replay(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setFixedSize(720,480);
-    QPixmap Background_Pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/match.jpg");
+    QPixmap Background_Pic("../images_projet/match.jpg");
 
     ui->Background_pic->setPixmap(Background_Pic.scaled( ui->Background_pic->width(), ui->Background_pic->height()));
 

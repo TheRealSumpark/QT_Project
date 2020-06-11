@@ -10,7 +10,7 @@ Fournisseur::Fournisseur(QWidget *parent) :
     this->setFixedSize(600,500);
     ui->stackedWidget->setCurrentIndex(0);
 
-    QPixmap Background_Pic("C:/Users/toshiba/Desktop/C++/QtApp/pics/match.jpg");
+    QPixmap Background_Pic("../images_projet/match.jpg");
 
     ui->Background_Pic->setPixmap(Background_Pic.scaled( ui->Background_Pic->width(), ui->Background_Pic->height()));
 

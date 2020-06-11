@@ -68,7 +68,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Statistiques</string>
+    <string>Représentation graphique</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Ajouter_joueur">

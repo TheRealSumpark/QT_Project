@@ -15,7 +15,7 @@ ajouter_joueur_equipe::ajouter_joueur_equipe(QWidget *parent) :
     ui(new Ui::ajouter_joueur_equipe)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/projet77c.png");
+    QPixmap pic("../images_projet/projet77c.png");
      ui->label_ajout->setPixmap(pic);
     QSqlQueryModel * Modal=new  QSqlQueryModel();
     QSqlQueryModel * Modal1=new  QSqlQueryModel();

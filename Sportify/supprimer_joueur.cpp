@@ -14,7 +14,7 @@ Supprimer_joueur::Supprimer_joueur(QWidget *parent) :
     ui(new Ui::Supprimer_joueur)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/714297.jpg");
+    QPixmap pic("../images_projet/714297.jpg");
     ui->label_sup->setPixmap(pic);
     ui->id_sup->hide();
     QSqlQueryModel * Modal=new  QSqlQueryModel();

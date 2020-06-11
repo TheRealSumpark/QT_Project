@@ -163,7 +163,7 @@
   <widget class="QLabel" name="image_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>290</x>
      <y>100</y>
      <width>171</width>
      <height>261</height>
@@ -176,8 +176,8 @@
   <widget class="QPushButton" name="b_image">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>340</y>
+     <x>160</x>
+     <y>339</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -248,6 +248,110 @@
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_IDControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>74</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_NomControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>112</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_PrenomControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>152</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_AgeControl">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>222</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ProidsControl">
+   <property name="geometry">
+    <rect>
+     <x>132</x>
+     <y>312</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_TailleControl">
+   <property name="geometry">
+    <rect>
+     <x>132</x>
+     <y>358</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_NumeroControl">
+   <property name="geometry">
+    <rect>
+     <x>142</x>
+     <y>411</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ImageControl">
+   <property name="geometry">
+    <rect>
+     <x>243</x>
+     <y>342</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_ajout</zorder>
   <zorder>Ajouter_joueur</zorder>
   <zorder>pushButton_2</zorder>
@@ -267,6 +371,14 @@
   <zorder>in_id</zorder>
   <zorder>in_number</zorder>
   <zorder>label_7</zorder>
+  <zorder>label_IDControl</zorder>
+  <zorder>label_NomControl</zorder>
+  <zorder>label_PrenomControl</zorder>
+  <zorder>label_AgeControl</zorder>
+  <zorder>label_ProidsControl</zorder>
+  <zorder>label_TailleControl</zorder>
+  <zorder>label_NumeroControl</zorder>
+  <zorder>label_ImageControl</zorder>
  </widget>
  <resources/>
  <connections/>

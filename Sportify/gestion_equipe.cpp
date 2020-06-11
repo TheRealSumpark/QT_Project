@@ -12,7 +12,7 @@ gestion_equipe::gestion_equipe(QWidget *parent) :
     ui(new Ui::gestion_equipe)
 {
     ui->setupUi(this);
-    this->setStyleSheet("background-image: url(C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/Sportify.png)");
+    this->setStyleSheet("background-image: url(../images_projet/Sportify.png)");
    // QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/projet77c.png");
     // ui->label->setPixmap(pic);
      ui->Afficher_equipe->hide();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>495</width>
-    <height>383</height>
+    <width>545</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -96,7 +96,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>501</width>
+     <width>551</width>
      <height>391</height>
     </rect>
    </property>
@@ -205,6 +205,71 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label_NomControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>40</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_CategorieControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>80</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ManagerControl">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>121</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ScoreControl">
+   <property name="geometry">
+    <rect>
+     <x>141</x>
+     <y>262</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ImageControl">
+   <property name="geometry">
+    <rect>
+     <x>142</x>
+     <y>332</y>
+     <width>20</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_ajout</zorder>
   <zorder>Ajouter_equipe_2</zorder>
   <zorder>label_2</zorder>
@@ -220,6 +285,11 @@
   <zorder>in_number</zorder>
   <zorder>label_8</zorder>
   <zorder>in_score</zorder>
+  <zorder>label_NomControl</zorder>
+  <zorder>label_CategorieControl</zorder>
+  <zorder>label_ManagerControl</zorder>
+  <zorder>label_ScoreControl</zorder>
+  <zorder>label_ImageControl</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -9,12 +9,12 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-   // MainWindow w;
-   // w.show();
+    MainWindow w;
+    w.show();
 
 
-    LOGO l;
-    l.show();
+   // LOGO l;
+    //l.show();
 
 
     return a.exec();

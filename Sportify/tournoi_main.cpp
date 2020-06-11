@@ -9,7 +9,7 @@ Tournoi_Main::Tournoi_Main(QWidget *parent) :
     ui->setupUi(this);
     this->setFixedSize(this->width(), this->height());
     ui->stackedWidget->setCurrentIndex(0);
-    QPixmap Background_Pic("C:/Users/toshiba/Desktop/C++/QtApp/pics/cup.jpg");
+    QPixmap Background_Pic("../images_projet/cup.jpg");
     ui->Tournoi_Background_Pic->setPixmap(Background_Pic.scaled(ui->Tournoi_Background_Pic->width(),ui->Tournoi_Background_Pic->height()));
 }
 

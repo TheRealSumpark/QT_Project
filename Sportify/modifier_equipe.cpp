@@ -16,9 +16,9 @@ modifier_equipe::modifier_equipe(QWidget *parent) :
 {
     ui->setupUi(this);
      ui->hide->hide();
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/4026.jpg");
+    QPixmap pic("../images_projet/4026.jpg");
      ui->label_modif->setPixmap(pic);
-     QPixmap pic1("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/white_back.jpg");
+     QPixmap pic1("../images_projet/white_back.jpg");
       ui->label_6->setPixmap(pic1);
     QSqlQueryModel * Modal=new  QSqlQueryModel();
     QSqlDatabase db1;

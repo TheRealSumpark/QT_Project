@@ -14,7 +14,7 @@ afficher_equipe::afficher_equipe(QWidget *parent) :
     ui(new Ui::afficher_equipe)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/projet77c.png");
+    QPixmap pic("../images_projet/projet77c.png");
      ui->label_affich->setPixmap(pic);
     QSqlDatabase db1;
     QSqlQueryModel * Modal1=new  QSqlQueryModel();

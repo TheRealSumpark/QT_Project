@@ -15,7 +15,7 @@ Match_Main::Match_Main(QWidget *parent) :
      this->setFixedSize(600,500);
      ui->stackedWidget->setCurrentIndex(0);
 
-     QPixmap Background_Pic("C:/Users/toshiba/Desktop/C++/QtApp/pics/match.jpg");
+     QPixmap Background_Pic("../images_projet/match.jpg");
 
      ui->Background_pic->setPixmap(Background_Pic.scaled( ui->Background_pic->width(), ui->Background_pic->height()));
 

@@ -16,7 +16,7 @@ Modifier_joueur::Modifier_joueur(QWidget *parent) :
     ui(new Ui::Modifier_joueur)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/714297.jpg");
+    QPixmap pic("../images_projet/714297.jpg");
      ui->label_modif->setPixmap(pic);
      ui->in_id->hide();
      Db_Afficher_Liste_Matchs();

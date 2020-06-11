@@ -37,7 +37,7 @@ void MainWindow::Main_Menu()
 {
 
      ui->stackedWidget->setCurrentIndex(1);
-      this->setStyleSheet("background-image: url(C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/Sportify.png)");
+      this->setStyleSheet("background-image: url(../images_projet/Sportify.png)");
       Connection c;
         bool test=c.createconnect();
         if(test)

@@ -13,7 +13,7 @@ gestion_joueur::gestion_joueur(QWidget *parent) :
     ui(new Ui::gestion_joueur)
 {
     ui->setupUi(this);
-    this->setStyleSheet("background-image: url(C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/Sportify.png)");
+    this->setStyleSheet("background-image: url(../images_projet/Sportify.png)");
   //  QPixmap pic("../images_projet/projet77c.png");
    //  ui->label->setPixmap(pic);
      //ui->Afficher_joueur->hide();

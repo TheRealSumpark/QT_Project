@@ -18,10 +18,13 @@ Afficher_joueur::Afficher_joueur(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Afficher_joueur)
 {
-    this->setFixedSize(720,480);
+   // this->setFixedSize(720,480);
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/projet77c.png");
+    QPixmap pic("../images_projet/projet77c.png");
      ui->label_affich->setPixmap(pic);
+     setObjectName(QStringLiteral("Représentation graphique"));
+     resize(759, 590);
+     setWindowTitle(QApplication::translate("Représentation graphique", "Représentation graphique", Q_NULLPTR));
      //ui->customPlot->addGraph();
      QSqlDatabase db1;
      QSqlQueryModel * Modal=new  QSqlQueryModel();
@@ -98,6 +101,8 @@ Afficher_joueur::Afficher_joueur(QWidget *parent) :
                         qDebug()<<x[j];
                     }
 
+                    ui->customPlot->setObjectName(QStringLiteral("customPlot"));
+                    ui->customPlot->setGeometry(QRect(10, 10, 711, 581));
                     ui->customPlot->setInteraction(QCP::iRangeDrag, true);
                     ui->customPlot->setInteraction(QCP::iRangeZoom, true);
                     ui->customPlot->addGraph();

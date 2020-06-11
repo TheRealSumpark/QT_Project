@@ -12,8 +12,10 @@ Ajouter_equipe::Ajouter_equipe(QWidget *parent) :
     ui(new Ui::Ajouter_equipe)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/714297.jpg");
+    QPixmap pic("../images_projet/714297.jpg");
      ui->label_ajout->setPixmap(pic);
+     PixTrueIcon=QPixmap("../Media_Player_Icons/True_icon.png");
+     PixFalseIcon=QPixmap("../Media_Player_Icons/False_icon.png");
 }
 
 Ajouter_equipe::~Ajouter_equipe()
@@ -37,6 +39,7 @@ void Ajouter_equipe::on_b_image_clicked()
     printf("erreur !");
     }
     }
+verifImage();
 }
 
 void Ajouter_equipe::on_pushButton_2_clicked()
@@ -66,11 +69,12 @@ void Ajouter_equipe::on_Ajouter_equipe_2_clicked()
        qry.prepare("insert into \"Sportify\".\"EQUIPE\" (NOM_EQUIPE,TOTAL_JOUEUR,SCORE,CATEGORIE,MANAGER_EQ,IMAGE_EQUIPE) values('"+nom+"',0, :sco, '"+categorie+"', '"+manager+"', '"+image+"')");
          qry.bindValue(":sco", sco);
 
-foreach(QLineEdit* le1, findChildren<QLineEdit*>()) {
-if(le1->isModified())
-    verif++;
-}
-if(verif>=3){
+verifNom();
+verifCategorie();
+verifManager();
+verifScore();
+verifImage();
+if(verifNom() && verifCategorie() && verifManager() && verifScore() && verifImage()){
 
     QMessageBox msgBox;
     msgBox.setText("The sports team has been added.");
@@ -86,6 +90,11 @@ if(verif>=3){
                  le->clear();
                  }
                  ui->image_2->clear();
+                 ui->label_NomControl->clear();
+                 ui->label_CategorieControl->clear();
+                 ui->label_ManagerControl->clear();
+                 ui->label_ImageControl->clear();
+                 ui->in_score->setValue(0);
                break;
            case QMessageBox::Cancel:
               QMessageBox::critical(this,tr("Annuler"),tr("Vous pouvez modifier les données :)"));
@@ -96,6 +105,106 @@ if(verif>=3){
          }
 }
 else{
-  QMessageBox::critical(this,tr("Annuler"),tr("Tu n'arrivera pas a ajouter tant que les champs sont vides :("));
+  QMessageBox::critical(this,tr("Annuler"),tr("Veuillez verifier les champs à saisir !"));
 }
+}
+
+
+bool Ajouter_equipe::verifNom()
+  {
+
+      if (ui->in_nom->text().contains(QRegExp("[^a-zA-Z ]")) || ui->in_nom->text().isEmpty())
+      {
+          ui->label_NomControl->setPixmap(PixFalseIcon);
+          return false;
+      }
+      else
+      {
+          ui->label_NomControl->setPixmap(PixTrueIcon);
+          return true;
+      }
+  }
+
+bool Ajouter_equipe::verifCategorie()
+  {
+
+      if (ui->in_categorie->text().contains(QRegExp("[^a-zA-Z ]")) || ui->in_categorie->text().isEmpty())
+      {
+          ui->label_CategorieControl->setPixmap(PixFalseIcon);
+          return false;
+      }
+      else
+      {
+          ui->label_CategorieControl->setPixmap(PixTrueIcon);
+          return true;
+      }
+  }
+
+bool Ajouter_equipe::verifManager()
+  {
+
+      if (ui->in_manager->text().contains(QRegExp("[^a-zA-Z ]")) || ui->in_manager->text().isEmpty())
+      {
+          ui->label_ManagerControl->setPixmap(PixFalseIcon);
+          return false;
+      }
+      else
+      {
+          ui->label_ManagerControl->setPixmap(PixTrueIcon);
+          return true;
+      }
+  }
+
+bool Ajouter_equipe::verifImage(){
+    if (!ui->image_2->pixmap()){
+        ui->label_ImageControl->setPixmap(PixFalseIcon);
+        return false;}
+    else{
+        ui->label_ImageControl->setPixmap(PixTrueIcon);
+        return true;}
+}
+
+bool Ajouter_equipe::verifScore()
+{
+    if (ui->in_score->value()<=0)
+    {
+        ui->label_ScoreControl->setPixmap(PixFalseIcon);
+        return false;
+    }
+    else
+    {
+
+        ui->label_ScoreControl->setPixmap(PixTrueIcon);
+        return true;
+    }
+
+}
+
+void Ajouter_equipe::on_in_nom_cursorPositionChanged(int arg1, int arg2)
+{
+    if(!ui->in_nom->text().isEmpty())
+    verifNom();
+    else
+    ui->label_NomControl->clear();
+}
+
+void Ajouter_equipe::on_in_categorie_cursorPositionChanged(int arg1, int arg2)
+{
+    if(!ui->in_categorie->text().isEmpty())
+    verifCategorie();
+    else
+    ui->label_NomControl->clear();
+}
+
+void Ajouter_equipe::on_in_manager_cursorPositionChanged(int arg1, int arg2)
+{
+    if(!ui->in_categorie->text().isEmpty())
+    verifManager();
+    else
+    ui->label_NomControl->clear();
+}
+
+void Ajouter_equipe::on_in_score_valueChanged(int arg1)
+{
+verifScore();
 }

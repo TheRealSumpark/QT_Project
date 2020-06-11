@@ -14,7 +14,7 @@ supprimer_equipe::supprimer_equipe(QWidget *parent) :
     ui(new Ui::supprimer_equipe)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/714297.jpg");
+    QPixmap pic("../images_projet/714297.jpg");
     ui->label_sup->setPixmap(pic);
     QSqlDatabase db1;
     QSqlQueryModel * Modal1=new  QSqlQueryModel();

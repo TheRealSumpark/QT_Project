@@ -12,10 +12,10 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/714297.jpg");
+    QPixmap pic("../images_projet/714297.jpg");
      ui->label_ajout->setPixmap(pic);
-     PixTrueIcon=QPixmap("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/True_icon.jpg");
-     PixFalseIcon=QPixmap("C:/Users/toshiba/Desktop/Sportify/Integration/images_projet/False_icon.jpg");
+     PixTrueIcon=QPixmap("../Media_Player_Icons/True_icon.png");
+     PixFalseIcon=QPixmap("../Media_Player_Icons/False_icon.png");
 
 }
 
