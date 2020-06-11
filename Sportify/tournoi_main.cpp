@@ -202,6 +202,7 @@ if (!Filename.isEmpty())
         //Préparationdu  document
         //Formatage des données sous forme de tableau
     QString text("<table width=\"100%\" border=\"1\"><thead>");
+     text.append("<caption>Liste des tournois </caption>");
     text.append("<tr>");
      for (int i = 0; i < model->columnCount(); i++) {
         text.append("<th>").append(model->headerData(i,Qt::Horizontal,Qt::DisplayRole).toString()).append("</th>");

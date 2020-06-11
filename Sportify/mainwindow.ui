@@ -67,7 +67,7 @@
        <string>Module Fournisseur/Equipements</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="Main_Menu_Oussema">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -77,7 +77,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Module Events/Guests</string>
       </property>
      </widget>
      <widget class="QPushButton" name="Main_Menu_Yassine">
@@ -256,13 +256,18 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="Main_button_afficher_fournisseurs">
-         <property name="text">
-          <string>Afficher les fournisseurs</string>
-         </property>
-        </widget>
-       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>50</y>
+        <width>221</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QPushButton" name="Main_button_afficher_equipements">
          <property name="text">
@@ -270,9 +275,17 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="Main_button_afficher_fournisseurs">
+         <property name="text">
+          <string>Afficher les fournisseurs</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="Oussema"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

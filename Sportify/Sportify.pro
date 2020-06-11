@@ -21,9 +21,13 @@ SOURCES += \
     ajouter_equipe.cpp \
     ajouter_joueur_equipe.cpp \
     connection.cpp \
+    equipements.cpp \
+    evenement.cpp \
+    event.cpp \
     fournisseur.cpp \
     gestion_equipe.cpp \
     gestion_joueur.cpp \
+    guests.cpp \
     logo.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -34,6 +38,7 @@ SOURCES += \
     qcustomplot.cpp \
     replay.cpp \
     statclass.cpp \
+    stati.cpp \
     supprimer_equipe.cpp \
     supprimer_joueur.cpp \
     tournoi_main.cpp \
@@ -46,9 +51,13 @@ HEADERS += \
     ajouter_equipe.h \
     ajouter_joueur_equipe.h \
     connection.h \
+    equipements.h \
+    evenement.h \
+    event.h \
     fournisseur.h \
     gestion_equipe.h \
     gestion_joueur.h \
+    guests.h \
     logo.h \
     mainwindow.h \
     match_main.h \
@@ -58,6 +67,7 @@ HEADERS += \
     qcustomplot.h \
     replay.h \
     statclass.h \
+    stati.h \
     supprimer_equipe.h \
     supprimer_joueur.h \
     tournoi_main.h \
@@ -69,6 +79,8 @@ FORMS += \
     afficher_joueur.ui \
     ajouter_equipe.ui \
     ajouter_joueur_equipe.ui \
+    equipements.ui \
+    evenement.ui \
     fournisseur.ui \
     gestion_equipe.ui \
     gestion_joueur.ui \
@@ -79,6 +91,7 @@ FORMS += \
     modifier_equipe.ui \
     modifier_joueur.ui \
     replay.ui \
+    stati.ui \
     supprimer_equipe.ui \
     supprimer_joueur.ui \
     tournoi_main.ui \

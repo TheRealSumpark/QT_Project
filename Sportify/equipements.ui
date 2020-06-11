@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Fournisseur</class>
- <widget class="QDialog" name="Fournisseur">
+ <class>Equipements</class>
+ <widget class="QDialog" name="Equipements">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -25,7 +25,7 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="Fournisseur_Ajout">
+   <widget class="QWidget" name="Equipement_Ajout">
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
@@ -37,22 +37,19 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="1">
-       <widget class="QLineEdit" name="Fournisseur_Ajout_Nom"/>
+       <widget class="QLineEdit" name="Equipement_Ajout_Nom"/>
       </item>
       <item row="3" column="2">
-       <widget class="QPushButton" name="Fournisseur_Ajout_Submit">
+       <widget class="QPushButton" name="Equipement_Ajout_Submit">
         <property name="text">
          <string>Submit</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="Fournisseur_Ajout_Adresse"/>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="Adresse_Label">
         <property name="text">
-         <string>Adresse</string>
+         <string>Quantite</string>
         </property>
        </widget>
       </item>
@@ -64,35 +61,38 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QPushButton" name="Fournisseur_Ajout_Cancel">
+       <widget class="QPushButton" name="Equipement_Ajout_Cancel">
         <property name="text">
          <string>Cancel</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="Equipement_Ajout_Image">
         <property name="text">
-         <string>Selectionner Logo fournisseur</string>
+         <string>Selectionner Image Equipement</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Logo</string>
+         <string>Image</string>
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="Equipement_Ajout_Quantite"/>
+      </item>
      </layout>
     </widget>
-    <widget class="QLabel" name="Fournisseur_Ajout_Logo">
+    <widget class="QLabel" name="Equipement_Ajout_Image_Display">
      <property name="geometry">
       <rect>
-       <x>354</x>
-       <y>202</y>
+       <x>370</x>
+       <y>190</y>
        <width>251</width>
-       <height>111</height>
+       <height>121</height>
       </rect>
      </property>
      <property name="text">
@@ -100,7 +100,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="Fournisseur_Affichage">
+   <widget class="QWidget" name="Equipements_Affichage">
     <widget class="QWidget" name="horizontalLayoutWidget">
      <property name="geometry">
       <rect>
@@ -123,7 +123,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
     </widget>
-    <widget class="QLabel" name="Fournisseur_Affichage_Logo">
+    <widget class="QLabel" name="Equipement_Affichage_Logo">
      <property name="geometry">
       <rect>
        <x>220</x>

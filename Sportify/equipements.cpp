@@ -1,74 +1,70 @@
-#include "fournisseur.h"
-#include "ui_fournisseur.h"
+#include "equipements.h"
+#include "ui_equipements.h"
 
-Fournisseur::Fournisseur(QWidget *parent) :
+Equipements::Equipements(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Fournisseur)
+    ui(new Ui::Equipements)
 {
     ui->setupUi(this);
+
 
     this->setFixedSize(600,500);
     ui->stackedWidget->setCurrentIndex(0);
 
-    QPixmap Background_Pic("../images_projet/Fournisseur_Background.jpg");
+    QPixmap Background_Pic("../images_projet/Equipements_Background.jpg");
 
     ui->Background_Pic->setPixmap(Background_Pic.scaled( ui->Background_Pic->width(), ui->Background_Pic->height()));
 
+
 }
 
-Fournisseur::~Fournisseur()
+Equipements::~Equipements()
 {
     delete ui;
 }
 
-void Fournisseur::on_Fournisseur_Ajout_Cancel_clicked()
-{
-        this->close();
-}
 
-void Fournisseur::on_Fournisseur_Ajout_Submit_clicked()
+void Equipements::on_Equipement_Ajout_Submit_clicked()
+
 {
     int error=0;
     QPalette *red = new QPalette();
     QPalette *white = new QPalette();
      red->setColor(QPalette::Base,Qt::red);
       white->setColor(QPalette::Base,Qt::white);
-        if(ui->Fournisseur_Ajout_Nom->text().trimmed().isEmpty())
-    {     ui->Fournisseur_Ajout_Nom->setPalette(*red) ; error=1;}
-        else {  ui->Fournisseur_Ajout_Nom->setPalette(*white); }
-        if(ui->Fournisseur_Ajout_Adresse->text().trimmed().isEmpty())
-    {       ui->Fournisseur_Ajout_Adresse->setPalette(*red)  ;error=1;}
-        else {  ui->Fournisseur_Ajout_Adresse->setPalette(*white); }
-        if (QString::compare(Logo,QString())==0)
-        { error=1;
+        if(ui->Equipement_Ajout_Nom->text().trimmed().isEmpty())
+    {     ui->Equipement_Ajout_Nom->setPalette(*red) ; error=1;}
+        else {  ui->Equipement_Ajout_Nom->setPalette(*white); }
+        if(ui->Equipement_Ajout_Quantite->value() <=0 || QString::compare(Logo,QString())==0)
+      { error=1;
             QMessageBox::warning(nullptr, QObject::tr(""),
-                                QObject::tr("Veuillez Remplir tous les champs et choisir Logo\n"
+                                QObject::tr("Veuillez Remplir tous les champs , choisir Image et definir une quantite supérieure à 0 \n"
                                             "Click Cancel to exit."), QMessageBox::Cancel);}
 
 
  if (!error)
-    Add_Values_To_Db(ui->Fournisseur_Ajout_Nom->text(),ui->Fournisseur_Ajout_Adresse->text(),Logo);
+    Add_Values_To_Db(ui->Equipement_Ajout_Nom->text(),ui->Equipement_Ajout_Quantite->value(),Logo);
 }
 
 
 
 
-void Fournisseur::Add_Values_To_Db(QString Nom , QString Adresse,QString Logo)
+void Equipements::Add_Values_To_Db(QString Nom , int  Quantite ,QString Logo)
 {
 
 
     QSqlQuery query;
-    query.prepare(" insert into \"Sportify\".\"FOURNISSEURS\""
-                  "(Id,Nom,Adresse,Logo) values (\"Sportify\".\"FOURNISSEURS_SEQ\".NEXTVAL,?,?,?);");
+    query.prepare(" insert into \"Sportify\".\"EQUIPEMENTS\""
+                  "(Id,Nom,Quantite,Image) values (\"Sportify\".\"EQUIPEMENTS_SEQ\".NEXTVAL,?,?,?);");
 
     query.addBindValue(Nom);
-    query.addBindValue(Adresse);
+    query.addBindValue(Quantite);
     query.addBindValue(Logo);
 
 
     if (!query.exec())
     {
-    qDebug()<<"Error adding values to fournisseurs table";
+    qDebug()<<"Error adding values to Equipements table";
     }
 
     else {
@@ -80,14 +76,14 @@ void Fournisseur::Add_Values_To_Db(QString Nom , QString Adresse,QString Logo)
 
 }
 
-void Fournisseur::Afficher_Liste_Fournisseurs()
+void Equipements::Afficher_Liste_Equipements()
 {   QSqlQuery query;
 
      ui->stackedWidget->setCurrentIndex(1);
 
      model = new QSqlTableModel(this);
 
-     model->setTable("\"Sportify\".\"FOURNISSEURS\"");
+     model->setTable("\"Sportify\".\"EQUIPEMENTS\"");
      model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 
 
@@ -96,8 +92,8 @@ void Fournisseur::Afficher_Liste_Fournisseurs()
 
      model->setHeaderData(0, Qt::Horizontal, tr("ID"));
      model->setHeaderData(1, Qt::Horizontal, tr("Nom"));
-     model->setHeaderData(2, Qt::Horizontal, tr("Adresse"));
-     model->setHeaderData(3, Qt::Horizontal, tr("Logo"));
+     model->setHeaderData(2, Qt::Horizontal, tr("Quantite"));
+     model->setHeaderData(3, Qt::Horizontal, tr("Image"));
 
      view= new QTableView;
 
@@ -133,11 +129,11 @@ void Fournisseur::Afficher_Liste_Fournisseurs()
             buttonBox1->setCenterButtons(true);
 
             //Connection des boutons avec leurs fonctions relatives
-            connect(deleteButton, &QPushButton::clicked,this, &Fournisseur::remove);
-            connect(submitButton, &QPushButton::clicked, this, &Fournisseur::submit);
+            connect(deleteButton, &QPushButton::clicked,this, &Equipements::remove);
+            connect(submitButton, &QPushButton::clicked, this, &Equipements::submit);
             connect(revertButton, &QPushButton::clicked,  model, &QSqlTableModel::revertAll);
-            connect(quitButton, &QPushButton::clicked, this, &Fournisseur::close);
-            connect(pdfButton,&QPushButton::clicked, this, &Fournisseur::generate_Pdf);
+            connect(quitButton, &QPushButton::clicked, this, &Equipements::close);
+            connect(pdfButton,&QPushButton::clicked, this, &Equipements::generate_Pdf);
 
             connect(view, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableClicked(const QModelIndex &)));
             ui->horizontalLayout->addWidget(view);
@@ -145,7 +141,7 @@ void Fournisseur::Afficher_Liste_Fournisseurs()
             ui->horizontalLayout_2->setAlignment(Qt::AlignHCenter);
             ui->horizontalLayout_2->addWidget(buttonBox1);
 
-                    setWindowTitle(tr("Liste Des Fournisseurs"));
+                    setWindowTitle(tr("Liste Des Equipementss"));
 
 
                     qDebug()<<view->selectionModel()->selectedIndexes();
@@ -156,7 +152,7 @@ void Fournisseur::Afficher_Liste_Fournisseurs()
 
 }
 
-void Fournisseur::remove()
+void Equipements::remove()
 {
    // récupère la listes des lignes sélectionnées
     QModelIndexList selection = view->selectionModel()->selectedIndexes();
@@ -173,7 +169,7 @@ void Fournisseur::remove()
 }
 
 
-void Fournisseur::submit()
+void Equipements::submit()
 {
 
     model->database().transaction();
@@ -190,12 +186,12 @@ void Fournisseur::submit()
 
 
 
-void Fournisseur::generate_Pdf()
+void Equipements::generate_Pdf()
 {
 
 
     QString Filename = QFileDialog::getSaveFileName(this,
-           tr("Sauvegarder Table Fournisseurs"), "C://",
+           tr("Sauvegarder Table Equipements"), "C://",
            tr("(*.pdf)"));
 if (!Filename.isEmpty())
 
@@ -209,7 +205,7 @@ if (!Filename.isEmpty())
     QTextDocument doc;
 
     QString text("<table width=\"100%\" border=\"1\"><thead>");
-     text.append("<caption>Liste des fournisseurs </caption>");
+    text.append("<caption>Liste des equipements </caption>");
     text.append("<tr>");
      for (int i = 0; i < model->columnCount(); i++) {
         text.append("<th>").append(model->headerData(i,Qt::Horizontal,Qt::DisplayRole).toString()).append("</th>");
@@ -235,7 +231,7 @@ ui->stackedWidget->setCurrentIndex(1);
 
 
 
- void Fournisseur::onTableClicked(const QModelIndex &index)
+ void Equipements::onTableClicked(const QModelIndex &index)
  {
      if (index.isValid()) {
 
@@ -245,17 +241,18 @@ ui->stackedWidget->setCurrentIndex(1);
          qDebug()<<id;
 
          QSqlQuery query;
-         query.prepare("select Logo from \"Sportify\".\"FOURNISSEURS\" where Id =:id;");
+         query.prepare("select Image from \"Sportify\".\"EQUIPEMENTS\" where Id =:id;");
          query.bindValue(":id",id);
          if (!query.exec())
          {qDebug("Error fetching pics");}
             else {
              qDebug()<<query.first();
              qDebug()<<query.value(0).toString();
+
              QPixmap Background_Pic=(query.value(0).toString());
 
 
-             ui->Fournisseur_Affichage_Logo->setPixmap(Background_Pic.scaled(ui->Fournisseur_Affichage_Logo->width(),ui->Fournisseur_Affichage_Logo->height(),Qt::KeepAspectRatio));
+             ui->Equipement_Affichage_Logo->setPixmap(Background_Pic.scaled(ui->Equipement_Affichage_Logo->width(),ui->Equipement_Affichage_Logo->height(),Qt::KeepAspectRatio));
 
 
          }
@@ -265,16 +262,24 @@ ui->stackedWidget->setCurrentIndex(1);
 
  }
 
-void Fournisseur::on_pushButton_clicked()
-{
-    QString filename= QFileDialog::getOpenFileName(this,tr("choose"),"",tr("Images(*.jpeg *.png *.jpg *.bmp *.gif"));
 
-        QImage pic;
-            bool valid =pic.load(filename);
-            if (QString::compare(filename,QString())!=0)
-          {if (valid)
-       {pic=pic.scaledToHeight(ui->Fournisseur_Ajout_Logo->height(),Qt::SmoothTransformation);
-              ui->Fournisseur_Ajout_Logo->setPixmap(QPixmap::fromImage(pic));
-              Logo=filename;
-                }}
+
+void Equipements::on_Equipement_Ajout_Cancel_clicked()
+{
+    this->close();
+}
+
+
+void Equipements::on_Equipement_Ajout_Image_clicked()
+{QString filename= QFileDialog::getOpenFileName(this,tr("choose"),"",tr("Images(*.jpeg *.png *.jpg *.bmp *.gif"));
+
+    QImage pic;
+        bool valid =pic.load(filename);
+        if (QString::compare(filename,QString())!=0)
+      {if (valid)
+   {pic=pic.scaledToHeight(ui->Equipement_Ajout_Image->height(),Qt::SmoothTransformation);
+          ui->Equipement_Ajout_Image_Display->setPixmap(QPixmap::fromImage(pic));
+          Logo=filename;
+            }}
+
 }

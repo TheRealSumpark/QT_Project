@@ -6,6 +6,11 @@
 #include "gestion_equipe.h"
 #include "video_stream.h"
 #include "fournisseur.h"
+#include "evenement.h"
+#include "equipements.h"
+
+
+
 
 #include <QStackedWidget>
 #include <QMediaPlayerControl>
@@ -280,4 +285,46 @@ void MainWindow::on_Main_button_ajouter_fournisseur_clicked()
     Fournisseur f;
     f.exec();
 
+}
+
+
+void MainWindow::on_Main_Menu_Oussema_clicked()
+{
+    Evenement e;
+    e.exec();
+}
+
+
+void MainWindow::on_Go_Back_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+
+void MainWindow::on_Main_Menu_Taib_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_Main_button_ajouter_equipement_clicked()
+{
+    Equipements e;
+    e.exec();
+}
+
+void MainWindow::on_Main_button_afficher_fournisseurs_clicked()
+{
+    Fournisseur f;
+    f.Afficher_Liste_Fournisseurs();
+    f.exec();
+
+
+}
+
+void MainWindow::on_Main_button_afficher_equipements_clicked()
+{
+    Equipements e;
+    e.Afficher_Liste_Equipements();
+    e.exec();
 }

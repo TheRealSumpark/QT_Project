@@ -74,10 +74,10 @@ void Match_Main::on_Match_Submit_clicked()
         if(ui->Match_stadium->text().isEmpty())
     {     ui->Match_stadium->setPalette(*red) ; error=1;}
         else {  ui->Match_stadium->setPalette(*white); }
-        if(ui->Match_Home->text().isEmpty())
+        if(ui->Match_Home->text().trimmed().isEmpty())
     {       ui->Match_Home->setPalette(*red)  ;error=1;}
         else {  ui->Match_Home->setPalette(*white); }
-        if(ui->Match_Visitor->text().isEmpty())
+        if(ui->Match_Visitor->text().trimmed().isEmpty())
     {     ui->Match_Visitor->setPalette(*red );error=1;}
         else {  ui->Match_Visitor->setPalette(*white); }
  if (!error)
@@ -279,6 +279,7 @@ if (!Filename.isEmpty())
         //Préparation du  document
         //Formatage des données sous forme de tableau
     QString text("<table width=\"100%\" border=\"1\"><thead>");
+     text.append("<caption>Liste des matchs </caption>");
     text.append("<tr>");
      for (int i = 0; i < model->columnCount(); i++) {
         text.append("<th>").append(model->headerData(i,Qt::Horizontal,Qt::DisplayRole).toString()).append("</th>");

@@ -1,5 +1,5 @@
-#ifndef FOURNISSEUR_H
-#define FOURNISSEUR_H
+#ifndef EQUIPEMENTS_H
+#define EQUIPEMENTS_H
 
 #include <QDialog>
 #include <QtDebug>
@@ -29,32 +29,38 @@
 
 
 namespace Ui {
-class Fournisseur;
+class Equipements;
 }
 
-class Fournisseur : public QDialog
+class Equipements : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Fournisseur(QWidget *parent = nullptr);
-    ~Fournisseur();
-    void Afficher_Liste_Fournisseurs();
-
+    explicit Equipements(QWidget *parent = nullptr);
+    ~Equipements();
+     void Afficher_Liste_Equipements();
 
 private slots:
-    void on_Fournisseur_Ajout_Cancel_clicked();
-    void Add_Values_To_Db(QString Nom,QString Adresse,QString Logo );
-    void on_Fournisseur_Ajout_Submit_clicked();
+
+    void Add_Values_To_Db(QString Nom,int  Quantite,QString Logo );
+
     void remove();
     void submit();
     void generate_Pdf();
     void onTableClicked(const QModelIndex &index);
 
-    void on_pushButton_clicked();
+
+
+
+    void on_Equipement_Ajout_Cancel_clicked();
+
+    void on_Equipement_Ajout_Submit_clicked();
+
+    void on_Equipement_Ajout_Image_clicked();
 
 private:
-    Ui::Fournisseur *ui;
+    Ui::Equipements *ui;
     QPushButton *submitButton;
     QPushButton *revertButton;
     QPushButton *quitButton;
@@ -67,4 +73,4 @@ private:
     QTableView *view;
 };
 
-#endif // FOURNISSEUR_H
+#endif // EQUIPEMENTS_H

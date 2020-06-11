@@ -62,6 +62,23 @@ private slots:
 
     void on_Main_button_ajouter_fournisseur_clicked();
 
+
+    void on_Main_Menu_Oussema_clicked();
+
+
+
+    void on_Go_Back_3_clicked();
+
+
+
+    void on_Main_Menu_Taib_clicked();
+
+    void on_Main_button_ajouter_equipement_clicked();
+
+    void on_Main_button_afficher_fournisseurs_clicked();
+
+    void on_Main_button_afficher_equipements_clicked();
+
 private:
     Ui::MainWindow *ui;
 
