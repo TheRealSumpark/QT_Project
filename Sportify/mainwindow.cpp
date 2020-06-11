@@ -45,7 +45,7 @@ void MainWindow::Main_Menu()
       this->setStyleSheet("MainWindow {background-image: url(../images_projet/Sportify.png);}");
     //QPixmap Background_Pic("../images_projet/Equipements_Background.jpg");
     // ui->Background_Pic->setPixmap(Background_Pic.scaled(ui->Background_Pic->width(),ui->Background_Pic->height()));
-      Connection c;
+     /* Connection c;
         bool test=c.createconnect();
         if(test)
         {
@@ -59,7 +59,7 @@ void MainWindow::Main_Menu()
                         QObject::tr("connection failed.\n"
                                     "Click Cancel to exit."), QMessageBox::Cancel);
 
-
+*/
 
 }
 void MainWindow::Media_Status_Changed(QMediaPlayer::MediaStatus status )

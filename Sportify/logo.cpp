@@ -1,5 +1,7 @@
 #include "logo.h"
 #include "ui_logo.h"
+#include "login.h"
+
 
 
 LOGO::LOGO(QWidget *parent) :
@@ -32,8 +34,8 @@ void LOGO::Media_Status_Changed(QMediaPlayer::MediaStatus status)
     if (status== QMediaPlayer::EndOfMedia)
     {
         this->close();
-      MainWindow *w = new MainWindow;
-      w->show();
+      login *l = new login;
+      l->show();
 
     }
 }

@@ -29,6 +29,7 @@ SOURCES += \
     gestion_joueur.cpp \
     guests.cpp \
     home.cpp \
+    login.cpp \
     logo.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     gestion_joueur.h \
     guests.h \
     home.h \
+    login.h \
     logo.h \
     mainwindow.h \
     match_main.h \
@@ -89,6 +91,7 @@ FORMS += \
     gestion_equipe.ui \
     gestion_joueur.ui \
     home.ui \
+    login.ui \
     logo.ui \
     mainwindow.ui \
     match_main.ui \

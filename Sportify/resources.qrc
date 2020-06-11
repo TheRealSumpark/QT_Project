@@ -18,6 +18,7 @@
         <file>../Resources/module event.png</file>
         <file>../Resources/module regarder.png</file>
         <file>../Resources/module tournois.png</file>
+        <file>../Resources/sportify.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
