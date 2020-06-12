@@ -155,19 +155,19 @@ ui->stackedWidget->setCurrentIndex(2);
 }
 void Evenement::on_pushButton_7_clicked() //mailing
 {
-   /* Sender smtp(QLatin1String("smtp.gmail.com"), 465, Sender::SslConnection);
+    Sender smtp(QLatin1String("smtp.gmail.com"), 465, Sender::SslConnection);
 
     // We need to set the username (your email address) and password
     // for smtp authentification.
 
-    smtp.setUser(QLatin1String("your_email_address@host.com"));
-    smtp.setPassword(QLatin1String("your_password"));
+    smtp.setUser(QLatin1String("oussema.charrada@esprit.tn"));
+    smtp.setPassword(QLatin1String("azer123"));
 
     // Now we create a MimeMessage object. This is the email.
 
     MimeMessage message;
 
-    EmailAddress sender(QLatin1String("your_email_address@host.com"), QLatin1String("Your Name"));
+    EmailAddress sender(QLatin1String("oussema.charrada@esprit.tn"), QLatin1String("oussema"));
     message.setSender(sender);
 
     EmailAddress to(QLatin1String("recipient@host.com"), QLatin1String("Recipient's Name"));
@@ -198,7 +198,7 @@ void Evenement::on_pushButton_7_clicked() //mailing
        stati  stat ;
         stat.setModal(true);
         stat.exec();
-*/  }
+ }
 
 
 
