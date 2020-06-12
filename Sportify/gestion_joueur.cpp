@@ -58,8 +58,7 @@ void gestion_joueur::on_Afficher_joueur_2_clicked()
 {
      this->close();
 
-        MainWindow *w=new MainWindow;
-        w->show();
+
 
 
 }

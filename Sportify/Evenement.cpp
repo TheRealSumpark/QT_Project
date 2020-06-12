@@ -73,8 +73,8 @@ Evenement::Evenement(QWidget *parent) :
     this->setStyleSheet("background-image: url(../images_projet/Sportify.png)");
     this->setFixedSize(ui->stackedWidget->width(),ui->stackedWidget->height());
     ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget_2->setCurrentIndex(0);
 
-   on_pushButton_8_clicked(); // affichage des events
 
 }
 
@@ -150,7 +150,7 @@ if (!Filename.isEmpty())
     doc.print(&printer);
     QMessageBox::question(this, tr("File Saved in :"), Filename, QMessageBox::Ok );
   }
-ui->stackedWidget->setCurrentIndex(1);
+ui->stackedWidget->setCurrentIndex(2);
 
 }
 void Evenement::on_pushButton_7_clicked() //mailing

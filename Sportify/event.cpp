@@ -40,7 +40,7 @@ bool event::ajouter_event(){
     QSqlQuery query;
     QString res2= date.toString("yyyy.MM.dd");
     QString res1= QString::number(budget);
-    query.prepare("INSERT INTO EVENTS (ID, BUDGET ,GOAL ,DATE1,NAME,GUESTLIST) VALUES (EVENTS_SEQ.NEXTVAL,:budget,:goal,:date,:name,:guestlist)");
+    query.prepare("INSERT INTO \"Sportify\".\"EVENTS\" (ID, BUDGET ,GOAL ,DATE1,NAME,GUESTLIST) VALUES (EVENTS_SEQ.NEXTVAL,:budget,:goal,:date,:name,:guestlist)");
 
     query.bindValue(":budget",res1);
     query.bindValue(":goal",goal);
@@ -54,7 +54,7 @@ bool event::ajouter_event(){
 QSqlQueryModel * event::afficher_event()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("select * from EVENTS");
+model->setQuery("select * from \"Sportify\".\"EVENTS\"");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("BUDGET"));
 model->setHeaderData(3, Qt::Horizontal, QObject::tr("GOAL"));
@@ -66,7 +66,7 @@ return model;
 }
 QSqlQueryModel * event::chercher_event(int idd){
 QSqlQuery q;
-q.prepare("select * from EVENTS where ID=:idd");
+q.prepare("select * from \"Sportify\".\"EVENTS\" where ID=:idd");
 q.bindValue(":idd", idd);
 q.exec();
 QSqlQueryModel * model = new QSqlQueryModel;
@@ -91,7 +91,7 @@ bool event::supprimer_event(int idc)
 {
 QSqlQuery query;
 QString ident1= QString::number(idc);
-query.prepare("Delete from EVENTS where ID = :id ");
+query.prepare("Delete from \"Sportify\".\"EVENTS\" where ID = :id ");
 query.bindValue(":id",ident1);
 return    query.exec();
 }
@@ -108,7 +108,7 @@ int idc=id;
     QString res1= QString::number(budget);
     QSqlQuery query;
 
-    query.prepare("UPDATE EVENTS SET name =:NAME, BUDGET=:BUDGET, GOAL=:GOAL,DATE1=:DATE,GUESTLIST=:GOALLIST WHERE ID = :id");
+    query.prepare("UPDATE \"Sportify\".\"EVENTS\" SET name =:NAME, BUDGET=:BUDGET, GOAL=:GOAL,DATE1=:DATE,GUESTLIST=:GOALLIST WHERE ID = :id");
 
     query.bindValue(":id",idc);
 

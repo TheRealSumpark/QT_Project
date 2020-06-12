@@ -18,7 +18,12 @@ Match_Main::Match_Main(QWidget *parent) :
      QPixmap Background_Pic("../images_projet/match.jpg");
 
      ui->Background_pic->setPixmap(Background_Pic.scaled( ui->Background_pic->width(), ui->Background_pic->height()));
+     QSqlQueryModel *model = new QSqlQueryModel;
+         model->setQuery("SELECT  NOM_EQUIPE from \"Sportify\".\"EQUIPE\" ");
+         model->setHeaderData(0, Qt::Horizontal, tr("Home_Team"));
 
+          ui->Home_Team->setModel(model);
+          ui->Visitor_Team->setModel(model);
 
 }
 
@@ -71,17 +76,21 @@ void Match_Main::on_Match_Submit_clicked()
     QPalette *white = new QPalette();
      red->setColor(QPalette::Base,Qt::red);
       white->setColor(QPalette::Base,Qt::white);
-        if(ui->Match_stadium->text().isEmpty())
-    {     ui->Match_stadium->setPalette(*red) ; error=1;}
-        else {  ui->Match_stadium->setPalette(*white); }
-        if(ui->Match_Home->text().trimmed().isEmpty())
-    {       ui->Match_Home->setPalette(*red)  ;error=1;}
-        else {  ui->Match_Home->setPalette(*white); }
-        if(ui->Match_Visitor->text().trimmed().isEmpty())
-    {     ui->Match_Visitor->setPalette(*red );error=1;}
-        else {  ui->Match_Visitor->setPalette(*white); }
+      if (ui->Match_stadium->text().trimmed().isEmpty())
+      { error=1;
+          ui->Match_stadium->setPalette(*red);
+      }
+      else {  ui->Match_stadium->setPalette(*white);  }
+    if (ui->Home_Team->currentText()== ui->Visitor_Team->currentText())
+    {error=1;
+        QMessageBox::warning(nullptr, QObject::tr(""),
+                    QObject::tr("Nom des Equipes doit etre different\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+
+
  if (!error)
- Db_Add_Values_To_Match_Table(ui->Match_Home->text(),ui->Match_Visitor->text(),ui->Match_date->selectedDate().toString("dd/MM/yyyy"), ui->Match_stadium->text(),Home_Team_Pic,Away_Team_Pic);
+ Db_Add_Values_To_Match_Table(ui->Home_Team->currentText(),ui->Visitor_Team->currentText(),ui->Match_date->selectedDate().toString("dd/MM/yyyy"), ui->Match_stadium->text(),Home_Team_Pic,Away_Team_Pic);
 }
 
 

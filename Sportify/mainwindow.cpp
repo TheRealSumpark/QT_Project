@@ -9,7 +9,7 @@
 #include "evenement.h"
 #include "equipements.h"
 #include "home.h"
-
+#include "agent.h"
 
 
 #include <QStackedWidget>
@@ -119,14 +119,14 @@ void MainWindow::on_Go_Back_clicked()
 
 void MainWindow::on_Gestion_joueur_clicked()
 {
-    this->close();
+
     gestion_joueur g;
     g.exec();
 }
 
 void MainWindow::on_Modifier_joueur_clicked()
 {
-    this->close();
+
      gestion_equipe g;
      g.exec();
 }
@@ -340,4 +340,11 @@ void MainWindow::on_Main_Menu_Khaled_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     this->close();
+}
+
+void MainWindow::on_Main_Menu_Regarder_2_clicked()
+{
+    Agent *a=new Agent();
+    a->show();
+
 }

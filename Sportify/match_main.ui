@@ -41,7 +41,7 @@
     <bool>true</bool>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page_0">
     <property name="enabled">
@@ -53,17 +53,10 @@
        <x>180</x>
        <y>50</y>
        <width>261</width>
-       <height>51</height>
+       <height>68</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="Match_Visitor">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="1">
        <widget class="QLabel" name="Visiting_Team_Label">
         <property name="text">
@@ -72,10 +65,12 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLineEdit" name="Match_Home">
-        <property name="text">
-         <string/>
-        </property>
+       <widget class="QComboBox" name="Home_Team">
+        <item>
+         <property name="text">
+          <string>Home Team</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="1" column="0">
@@ -167,15 +162,24 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="Visitor_Team">
+        <item>
+         <property name="text">
+          <string>Away Team</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </widget>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>100</y>
+       <y>120</y>
        <width>261</width>
-       <height>321</height>
+       <height>355</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -184,14 +188,14 @@
         <item>
          <widget class="QPushButton" name="Match_Home_Pic">
           <property name="text">
-           <string>Home Team</string>
+           <string>Home Team Pic</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="Match_Away_Pic">
           <property name="text">
-           <string>Away Team</string>
+           <string>Away Team Pic</string>
           </property>
          </widget>
         </item>

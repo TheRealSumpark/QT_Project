@@ -93,6 +93,8 @@ private slots:
 
     void on_home_5_clicked();
 
+    void on_Qr_Code_clicked();
+
 private:
     Ui::home *ui;
 

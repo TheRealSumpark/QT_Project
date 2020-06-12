@@ -61,7 +61,6 @@ a.exec();
 void gestion_equipe::on_Afficher_equipe_2_clicked()
 {
     this->close();
-    MainWindow *w=new MainWindow;
-    w->show();
+
 
 }

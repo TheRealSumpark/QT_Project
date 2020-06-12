@@ -34,7 +34,7 @@ bool Guests::ajouter_guests(){
 
     QString res1= QString::number(level_of_importance);
 
-    query.prepare("INSERT INTO GUESTS (ID, level_of_importance ,name ,lastname ,job,contacts) VALUES (GUESTS_SEQ.NEXTVAL,:level_of_importance,:name,:lastname,:job,:contacts)");
+    query.prepare("INSERT INTO \"Sportify\".\"GUESTS\" (ID, level_of_importance ,name ,lastname ,job,contacts) VALUES (GUESTS_SEQ.NEXTVAL,:level_of_importance,:name,:lastname,:job,:contacts)");
 
      query.bindValue(":level_of_importance",res1);
        query.bindValue(":name",name);
@@ -45,7 +45,7 @@ bool Guests::ajouter_guests(){
 }
 QSqlQueryModel * Guests::afficher_guests()
 {QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("select * from GUESTS");
+model->setQuery("select * from\"Sportify\".\"GUESTS\"");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("LEVEL_OF_IMPORTANCE"));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("NAME"));
@@ -59,7 +59,7 @@ return model;
 
 QSqlQueryModel * Guests::chercher_guests(int idd){
 QSqlQuery q;
-q.prepare("select * from GUESTS where ID=:idd");
+q.prepare("select * from \"Sportify\".\"GUESTS\" where ID=:idd");
 q.bindValue(":idd", idd);
 q.exec();
 QSqlQueryModel * model = new QSqlQueryModel;
@@ -83,7 +83,7 @@ bool Guests::supprimer_guests(int idc)
 {
 QSqlQuery query;
 QString ident1= QString::number(idc);
-query.prepare("Delete from GUESTS where ID = :id ");
+query.prepare("Delete from \"Sportify\".\"GUESTS\" where ID = :id ");
 query.bindValue(":id",ident1);
 return    query.exec();
 }
@@ -96,7 +96,7 @@ bool Guests::modifier_guests(int id,int level_of_importance,QString name,QString
     QString res1= QString::number(level_of_importance);
     QSqlQuery query;
 
-    query.prepare("UPDATE GUESTS SET level_of_importance=:level, name=:name, lastname=:lastname,contacts=:contacts,job=:job WHERE ID = :id");
+    query.prepare("UPDATE \"Sportify\".\"GUESTS\" SET level_of_importance=:level, name=:name, lastname=:lastname,contacts=:contacts,job=:job WHERE ID = :id");
 
     query.bindValue(":level_of_importance",res1);
     query.bindValue(":name",name);

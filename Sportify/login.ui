@@ -109,7 +109,7 @@ QPushButton:hover
      <string/>
     </property>
     <property name="text">
-     <string/>
+     <string>CIN</string>
     </property>
     <property name="placeholderText">
      <string>Username / E-mail</string>
@@ -147,7 +147,7 @@ QPushButton:hover
      <string notr="true">color:white;</string>
     </property>
     <property name="text">
-     <string>Username</string>
+     <string>CIN</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">

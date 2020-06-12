@@ -70,8 +70,8 @@ private:
     QDialogButtonBox *buttonBox;
     QSqlTableModel *model;
     QTableView *view;
-    QString Home_Team_Pic;
-    QString Away_Team_Pic;
+    QString Home_Team_Pic="../images_projet/exclamation_mark.png";
+    QString Away_Team_Pic="../images_projet/exclamation_mark.png";
 
 };
 

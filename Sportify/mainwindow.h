@@ -83,6 +83,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_Main_Menu_Regarder_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 

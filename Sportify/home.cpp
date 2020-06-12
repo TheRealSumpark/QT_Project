@@ -559,3 +559,13 @@ void home::on_home_5_clicked()
 {
     this->close();
 }
+
+void home::on_Qr_Code_clicked()
+{
+    QProcess *proc = new QProcess;
+    QString progName = "../Qr_Code/QRCode_Generator.exe";
+    proc->start(progName);
+    proc->errorString();
+    proc->errorString();
+    qDebug()<< " Started the process"<<endl;
+}

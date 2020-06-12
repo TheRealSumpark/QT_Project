@@ -18,6 +18,7 @@ SOURCES += \
     Ajouter_joueur.cpp \
     afficher_equipe.cpp \
     afficher_joueur.cpp \
+    agent.cpp \
     ajouter_equipe.cpp \
     ajouter_joueur_equipe.cpp \
     connection.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     Ajouter_joueur.h \
     afficher_equipe.h \
     afficher_joueur.h \
+    agent.h \
     ajouter_equipe.h \
     ajouter_joueur_equipe.h \
     connection.h \
@@ -83,6 +85,7 @@ FORMS += \
     Ajouter_joueur.ui \
     afficher_equipe.ui \
     afficher_joueur.ui \
+    agent.ui \
     ajouter_equipe.ui \
     ajouter_joueur_equipe.ui \
     equipements.ui \

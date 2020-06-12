@@ -29,7 +29,7 @@ void login::on_login_2_clicked()
 
 
     QSqlQuery query;
-    query.prepare("SELECT * from \"Sportify\".\"USERS\" WHERE USERNAME = ? AND PASSWORD =?");
+    query.prepare("SELECT * from \"Sportify\".\"AGENTS\" WHERE CIN = ? AND MDP =?");
     query.addBindValue(username);
     query.addBindValue(password);
 
