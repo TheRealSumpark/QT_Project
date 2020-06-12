@@ -166,14 +166,14 @@ void Evenement::on_pushButton_7_clicked() //mailing
     // Now we create a MimeMessage object. This is the email.
 
     MimeMessage message;
+       message.addRecipient(new EmailAddress(ui->lineEdit_9->text(), ""));
+        message.setSubject(ui->lineEdit_14->text());
 
-    EmailAddress sender(QLatin1String("oussema.charrada@esprit.tn"), QLatin1String("oussema"));
-    message.setSender(sender);
+        MimeText text;
 
-    EmailAddress to(QLatin1String("recipient@host.com"), QLatin1String("Recipient's Name"));
-    message.addTo(to);
+        text.setText(ui->lineEdit_15->text());
 
-    message.setSubject(QLatin1String("SmtpClient for Qt - Demo"));
+        message.addPart(&text);
 
     // Now add some text to the email.
     // First we create a MimeText object.
